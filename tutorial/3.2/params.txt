@@ -1,0 +1,12 @@
+&soundPath=http://ccrg.cs.memphis.edu/assets/audio/The%20Copycat%20Architecture.mp3&
+&totalSlides=10&
+&Slide1=0&
+&Slide2=15&
+&Slide3=255&
+&Slide4=448&
+&Slide5=556&
+&Slide6=604&
+&Slide7=648&
+&Slide8=678&
+&Slide9=742&
+&Slide10=815&

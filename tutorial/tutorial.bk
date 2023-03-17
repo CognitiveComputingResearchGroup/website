@@ -1,0 +1,412 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>How Minds Work:Tutorial</title>
+
+<script language="javascript" src="alttxt.js">
+
+//Popup info box III (By Brian Gosselin, http://scriptasylum.com/bgaudiodr/)
+//Script featured on Dynamicdrive.com
+//For full source, TOS, and 100's more DHTML scripts, visit http://www.dynamicdrive.com
+
+  </script>
+<link href="tutorial.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style1 {font-size: 9px}
+-->
+</style>
+</head>
+
+<body>
+<table width="700" border="0" align="left" cellpadding="1" cellspacing="0">
+  <tr>
+    <td colspan="3" align="left"><table width="700" border="0" align="left" cellpadding="1" cellspacing="0">
+      <tr>
+        <td align="left"><img src="images/tut_header.jpg" width="850" height="100"></td>
+      </tr>
+    </table></td>
+  </tr>
+    <tr>
+        <td  height="1" colspan="2" align="left" bgcolor="#999999"></td>
+  </tr>
+  <tr>
+    <td width="140" height="226" valign="top" bgcolor="#EEEEEE"><table width="100%" height="0"  border="0" cellpadding="2" cellspacing="1" bgcolor="#EEEEEE">
+      <tr>
+        <td width="134" height="15" class="links"><a href="index.html">Home</a></td>
+      </tr>
+      <tr>
+        <td height="15" class="links"><a href="introduction.html">Introduction</a></td>
+      </tr>
+      <tr>
+        <td class="links"><a href="synopsis.html" target="_blank" >Brief Tutorial </a></td>
+      </tr>
+      <tr>
+        <td class="links"><a href="tutorial.html" >Full Tutorial</a></td>
+      </tr>
+      <tr>
+        <td class="links"><a href="glossary.html" >Glossary</a></td>
+      </tr>
+      <tr>
+        <td class="links"><a href="links.html" >Links</a></td>
+      </tr>
+      <tr>
+        <td background="../images/linkbg.jpg"><a href="../index.html">CCRG Home </a></td>
+      </tr>
+      <tr></tr>
+  
+    </table></td>
+    <td width="710" rowspan="2" valign="top"><table width="100%" border="0" cellspacing="5">
+      <tr>
+        <td><table width="100%" border="0" cellpadding="1" cellspacing="0">
+
+            <tr>
+              <td height="7" colspan="5" align="center" valign="bottom" class="header">Tutorial<br></td>
+            </tr>
+            <tr>
+              <td height="7" colspan="5" align="right" valign="bottom" class="bodytxt">Click <a href="directions.html" target="_blank">here</a> for help with the Tutorial </td>
+            </tr>
+            <tr>
+              <td height="7" colspan="5" align="right" valign="bottom" class="bodytxt"><strong>P = </strong>Presentation</td>
+            </tr>
+            <tr>
+              <td height="7" colspan="5" align="right" valign="bottom" class="bodytxt"><strong>*A = </strong> Audio Presentation </td>
+            </tr>
+            <tr>
+              <td height="7" colspan="5" align="right" valign="bottom" class="bodytxt"><strong>D = </strong>Download PDF </td>
+            </tr>
+            <tr>
+              <td height="7" colspan="5" align="right" valign="bottom" class="bodytxt"><strong>R =</strong> Resources</td>
+            </tr>
+            <tr>
+              <td height="7" colspan="5" align="right" valign="bottom" class="bodytxt">*<span class="smalltxt">(will require</span> <a href="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank">flash player</a> <span class="smalltxt">7 or higher)</span> </td>
+            </tr>
+            <tr>
+              <td height="7" colspan="5" align="right" valign="bottom">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="left" height="14" valign="bottom" width="558"><div align="left"><a href="http://csrg.cs.memphis.edu/tutorial/tutorial.html#" onMouseOver="writetxt('This section will serve to orient us to the computational IDA model on which the conceptual model of how minds work is based.')" onMouseOut="writetxt(0)">0.Quick Overview</a><a name="Quick" id="Quick"></a></div></td>
+                <td width="32" height="14" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td width="36" height="14" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="14" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="558" height="19" align="left" valign="bottom" class="indtext"> 0.1 The <span class="style3">IDA</span> Technology </td>
+                <td width="32" height="19" align="center" valign="top" bgcolor="#eeeeee"><a href="flash_paper/IDAtechnologyIIS longer.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="#">A</a></td>
+                <td height="19" align="center" valign="top" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/IDAtechnologyIIS longer.pdf">D</a></td>
+                <td width="30" height="19" align="center" valign="top"><a href="resources.html">R</a></td>
+            </tr>
+            <tr>
+              <td align="left" height="14" valign="bottom" width="558">&nbsp;&nbsp;&nbsp; </td>
+                <td width="32" height="14" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="14" align="left" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="14" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="left" height="18" width="558"><div align="left"> <a href="http://csrg.cs.memphis.edu/tutorial/tutorial.html#" onMouseOver="writetxt('Here we&rsquo;ll find explanations for important preliminary concepts needed in order to understand how minds work.')" onMouseOut="writetxt(0)">1.Getting Started</a><a name="Getting" id="Getting"></a></div></td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="18" align="left" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext"><span class="style2">1.1 Minds, Agents, Senses and Actions</span></td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/MindsAgentsSensesActions.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="1.1/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/MindsAgentsSensesActions.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#MindsSensesAgentsActions">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" bgcolor="#EEEEEE" class="indtext"> 1.2 Brains, Ontologies and Virtual Machines</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/BrainsOntVirtualMachines.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a target="_blank" href="http://csrg.cs.memphis.edu/tutorial/assets/slides/Lecture2/BrainsOntologies&amp;VirtualMachines.swf">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/BrainsOntVirtualMachines.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#BrainsOntologiesVirtualMachines">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext"> 1.3 An Ontology for Cognition</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/AnOntologyforCognition.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="1.3/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/AnOntologyforCognition.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#AnOntologyforCognition">R</a></td>
+            </tr>
+            <tr>
+              <td align="left" height="18">&nbsp;</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="left" height="18" width="558"><div align="left"><a href="http://csrg.cs.memphis.edu/tutorial/tutorial.html#" onMouseOver="writetxt('Here we begin the meat of the model, discussing its architecture, its theoretical background, its &ldquo;atom of cognition&rdquo; and how it helps to explain how minds work.')" onMouseOut="writetxt(0)">2.IDA Models the Human Mind</a><a name="IDA" id="IDA"></a></div></td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext"> 2.1 IDA and her Architecture</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/IDAandherArchitecture.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="2.1/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/IDAandherArchitecture.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#IDAandherArchitecture" target="_self">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" bgcolor="#EEEEEE" class="indtext"> 2.2 Global Workspace Theory</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/Global Workspace Theory.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="2.2/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Global Workspace Theory.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#GlobalWorkspaceTheory">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext"> 2.3 The IDA Cognitive Cycle</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/The IDA Cognitive Cycle.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="http://csrg.cs.memphis.edu/assets/audio/The%20IDA%20Cognitive%20Cycle.mp3" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/The IDA Cognitive Cycle.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#TheIDACognitiveCycle">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" bgcolor="#EEEEEE" class="indtext"> 2.4 The IDA Model of Cognition</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/The IDA Model of Cognition.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="http://csrg.cs.memphis.edu/assets/audio/The%20IDA%20Model%20of%20Cognition.mp3" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/The IDA Model of Cognition.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#TheIDAModelofCognition">R</a></td>
+            </tr>
+            <tr>
+              <td align="left" height="18">&nbsp;</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="18" align="left" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="left" height="18" width="558"><div align="left"><a href="http://csrg.cs.memphis.edu/tutorial/tutorial.html#" onMouseOver="writetxt('Here we&rsquo;ll explore several different &ldquo;mechanisms of mind&rdquo; that will help us to understand the IDA model of mind in more detail.')" onMouseOut="writetxt(0)">3.Mechanisms to Think With</a><a name="Mechanisms" id="Mechanisms"></a></div></td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="18" align="left" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext"> 3.1 Pandemonium Theory</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/Pandemonium Theory.swf" target="_blank">P</a></td>
+                <td width="32" align="center">&nbsp;<a href="3.1/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Pandemonium Theory.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#PandemoniumTheory">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" bgcolor="#EEEEEE" class="indtext"> 3.2 The Copycat Architecture</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/CopyCat Architecture.swf" target="_blank">P</a></td>
+                <td width="32" align="center">&nbsp;<a href="3.2/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/CopyCat Architecture.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#TheCopycatArchitecture">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext"> 3.3 Sparse Distributed Memory</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/SparseDistributedMemory.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="3.3/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/SparseDistributedMemory.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#SparseDistributedMemory">R</a></td>
+            </tr>
+            <tr>
+              <td height="18" align="left" bgcolor="#EEEEEE" class="indtext">3.4 Schema Mechanism </td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/SchemaMechanism.swf">P</a></td>
+                <td width="32" align="center">&nbsp;<a href="3.4/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/SchemaMechanism.pdf">D</a></td>
+                <td width="30" height="18" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext"> 3.5 Behavior Networks</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/BehaviorNets.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="3.5/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/BehaviorNets.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#BehaviorNetworks">R</a></td>
+            </tr>
+            <tr>
+              <td align="left" height="18" width="558">&nbsp;</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="left" height="18" nowrap="nowrap" width="558"><div align="left"> <a href="http://csrg.cs.memphis.edu/tutorial/tutorial.html#" onMouseOver="writetxt('While neuroscience, by itself, can&rsquo;t explain how minds work, it&rsquo;s an important underpinning, so that knowing a little about it can help.')" onMouseOut="writetxt(0)">4.What Does Biology Say?</a><a name="What" id="What"></a> </div>
+                <div align="left"></div></td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext">4.1 Neuroscience
+                <div align="left"></div></td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/Neuroscience.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="4.1/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Neuroscience.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#Neuroscience">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" bgcolor="#EEEEEE" class="indtext"> 4.2 Neurobiological Non-linear Complex Systems</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/Neurobiological.swf" target="_blank">P</a></td>
+                <td width="32" align="center">&nbsp;<a href="4.2/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Neurobiological.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#Neurobiological">R</a></td>
+            </tr>
+            <tr>
+              <td align="left" height="12" width="558">&nbsp;</td>
+                <td width="32" height="12" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="12" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="12" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="left" height="18" width="558"><div align="left"> <a href="http://csrg.cs.memphis.edu/tutorial/tutorial.html#" onMouseOver="writetxt('Finally we&rsquo;ll begin a detailed explanation of how mind work by looking inside a &ldquo;cognitive atom,&rdquo; the elementary building block of cognition.')" onMouseOut="writetxt(0)">5.Expanding IDA&rsquo;s Cognitive Cycle</a><a name="Expanding" id="Expanding"></a>&nbsp;</div></td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext">5.1 Sensing and Perceiving</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/Sensing&Perceiving.swf" target="_blank">P</a></td>
+                <td width="32" align="center">&nbsp;<a href="5.1/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Sensing&Perceiving.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#SensingandPerceiving">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" bgcolor="#EEEEEE" class="indtext">5.2 Working and Episodic Memories</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/Working&EpisodicMemory.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="#">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Working&EpisodicMemory.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#Working">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext">5.3 "Consciousness"</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/Consciousness.swf" target="_blank">P</a></td>
+                <td width="32" align="center">&nbsp;<a href="#">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Consciousness.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html#Consciousness">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" bgcolor="#EEEEEE" class="indtext">5.4 Memories and Learning</td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"><a href="flash_paper/Memory&Learning.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="5.4/audio_pp.html" target="_blank">A</a></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Memory&Learning.pdf">D</a></td>
+                <td width="30" height="18" align="center"><a href="resources.html">R</a></td>
+            </tr>
+            <tr>
+              <td align="left" height="18" width="558"><pre>&nbsp; </pre>              </td>
+                <td width="32" height="18" align="center" bgcolor="#eeeeee"></td>
+                <td width="32" align="center"></td>
+                <td height="18" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center"></td>
+            </tr>
+            <tr>
+              <td align="left" height="19" valign="top" width="558"><div align="left"><a href="http://csrg.cs.memphis.edu/tutorial/tutorial.html#" onMouseOver="writetxt('Here we&rsquo;ll begin to see how mind combine &ldquo;cognitive atoms&rdquo; to produce higher level thought processes.')" onMouseOut="writetxt(0)">6.How to Think at a Higher-Level</a><strong><a name="How" id="How"></a></strong></div></td>
+                <td width="32" height="19" align="center" valign="top" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="19" align="center" valign="top" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="19" align="center" valign="top">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" class="indtext"> 6.1 Deliberation and Volition</td>
+                <td width="32" height="18" align="center" valign="top" bgcolor="#eeeeee"><a href="flash_paper/Deliberation&Volition.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="#">A</a></td>
+                <td height="18" align="center" valign="top" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Deliberation&Volition.pdf">D</a></td>
+                <td width="30" height="18" align="center" valign="top"><a href="resources.html#Deliberation">R</a></td>
+            </tr>
+            <tr>
+              <td width="558" height="19" align="left" valign="top" bgcolor="#EEEEEE" class="indtext"> 6.2 Automization</td>
+                <td width="32" height="19" align="center" valign="top" bgcolor="#eeeeee"><a href="flash_paper/Automatization-ASNegatu.swf" target="_blank">P</a></td>
+                <td width="32" align="center">&nbsp;<a href="#">A</a></td>
+                <td height="19" align="center" valign="top" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/Automatization-ASNegatu.pdf">D</a></td>
+                <td width="30" height="19" align="center" valign="top"><a href="resources.html">R</a></td>
+            </tr>
+            <tr>
+              <td align="left" height="18" valign="top" width="558">&nbsp;</td>
+                <td width="32" height="18" align="center" valign="top" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="18" align="center" valign="top" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="18" align="center" valign="top">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="left" height="21" width="558"><div align="left"><a href="http://csrg.cs.memphis.edu/tutorial/tutorial.html#" onMouseOver="writetxt('In this section we&rsquo;ll sample explanations of various though processes as they are produced by the model of mind we&rsquo;ve been exploring.')" onMouseOut="writetxt(0)">7.Explaining Mind with the IDA Model</a><a name="Explaining" id="Explaining"></a></div></td>
+                <td width="32" height="21" align="center" bgcolor="#eeeeee"></td>
+                <td width="32" align="center"></td>
+                <td height="21" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"></td>
+                <td width="30" height="21" align="center"></td>
+            </tr>
+            <tr>
+              <td width="558" height="18" align="left" valign="top" class="indtext">7.1 The IDA Model: A Tool to ThinkWith</td>
+                <td width="32" height="18" align="center" valign="top" bgcolor="#eeeeee"><a href="flash_paper/SampleAnalyses.swf" target="_blank"> P</a></td>
+                <td width="32" align="center" valign="top">&nbsp;<a href="#">A</a></td>
+                <td height="18" align="center" valign="top" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana"><a href="PDFs/SampleAnalyses.pdf">D</a></td>
+                <td width="30" height="18" align="center" valign="top"><a href="resources.html">R</a></td>
+            </tr>
+            <tr>
+              <td align="left" height="21" width="558">&nbsp;</td>
+                <td width="32" height="21" align="center" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="21" align="center" bgcolor="#EEEEEE" font-family="font-family:" verdana="Verdana">&nbsp;</td>
+                <td width="30" height="21" align="center">&nbsp;</td>
+            </tr>
+            <tr>
+              <td align="left" height="21" valign="top" width="558"><div align="left"> <a href="http://csrg.cs.memphis.edu/tutorial/tutorial.html#" onMouseOver="writetxt('Here we&rsquo;ll explore several modes of learning that play such an important role in how minds work.')" onMouseOut="writetxt(0)">8.Learning with the IDA Model</a><a name="Learning" id="Learning"></a></div></td>
+                <td width="32" height="21" align="center" valign="top" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="21" align="center" valign="top" bgcolor="#EEEEEE">&nbsp;</td>
+                <td width="30" height="21" align="center" valign="top">&nbsp;</td>
+            </tr>
+            <tr>
+              <td width="558" height="19" align="left" valign="top" class="indtext"> 8.1 The IDA and LIDA Models </td>
+                <td width="32" height="19" align="center" valign="top" bgcolor="#eeeeee"><a href="flash_paper/CompArch.swf" target="_blank"> P</a></td>
+                <td width="32" align="center">&nbsp;<a href="#">A</a></td>
+                <td height="19" align="center" bgcolor="#EEEEEE"><a href="PDFs/IDA&LIDA Models.pdf">D</a></td>
+                <td width="30" height="19" align="center" valign="top"><a href="resources.html">R</a></td>
+            </tr>
+            <tr>
+              <td align="left" height="21" valign="top" width="558">&nbsp;</td>
+                <td width="32" height="21" align="center" valign="top" bgcolor="#eeeeee">&nbsp;</td>
+                <td width="32" align="center"></td>
+                <td height="21" align="center" valign="top" bgcolor="#EEEEEE">&nbsp;</td>
+                <td width="30" height="21" align="center" valign="top">&nbsp;</td>
+            </tr>
+          </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="bottom" bgcolor="#EEEEEE"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+      <tr> </tr>
+      <tr>
+        <td height="1" bgcolor="#CDE0F1"></td>
+      </tr>
+      <tr>
+        <td><img src="images/groupsmall.jpg" width="140" height="100"></td>
+      </tr>
+      <tr>
+        <td height="1" bgcolor="#CDE0F1"></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td colspan="3"><table width="100%" border="0" align="center" cellpadding="1" cellspacing="0">
+      <tr>
+        <td  height="1" colspan="2" align="left" bgcolor="#999999"></td>
+      </tr>
+      <tr>
+        <td width="428"  height="1" valign="top"><span class="smalltxt">Copyright &copy; 2006 Cognitive Computing Research Group All rights reserved</span></td>
+        <td align="right"><img src="images/UniversityOfMemphis-1.jpg" width="110" height="32"></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+ <div id="navtxt" class="navtext" style="position: absolute; top: -100px; left: 0px; visibility: hidden;"> </div>
+</body>
+</html>

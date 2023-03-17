@@ -1,0 +1,535 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0089)http://www.msci.memphis.edu/~cmattie/MetacognitionInSoftwareAgentsUsingClassifierSystems/ -->
+<HTML><HEAD><TITLE>Comp 7282 Fall,1997</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2713.1100" name=GENERATOR></HEAD>
+<BODY><B>
+<P align=center>&nbsp;</P>
+<P align=center>Metacognition in Software Agents Using Classifier Systems<IMG 
+height=18 src="" width=11></B> </P>
+<P align=center>&nbsp;</P>
+<P align=center>Zhaohua Zhang</P>
+<P align=center>Stan Franklin</P>
+<P align=center>Dipankar Dasgupta</P><B>
+<P align=center>&nbsp;</P></B>
+<P align=center>Institute for Intelligent Systems</P>
+<P align=center>The University of Memphis</P>
+<P align=center>Memphis, Tennessee, 38152, USA</P>
+<P align=center>&nbsp;</P><B>
+<P align=center>&nbsp;</P>
+<P align=center>Abstract<FONT face=Symbol> </FONT></P></B>
+<P align=justify>Software agents "living" and acting in a real world software 
+environment, such as an operating system, a network, or a database system, can 
+carry out many tasks for humans. Metacognition is very important for humans. It 
+guides people to select, evaluate, revise, and abandon cognitive tasks, goals, 
+and strategies. Thus, metacognition plays an important role in human-like 
+software agents. Metacognition includes metacognitive knowledge, metacognitive 
+monitoring, and metacognitive regulation. Conscious Mattie (CMattie), "living" 
+in a Unix machine, automatically reads and understands email concerning seminars 
+(in natural language), and composes and distributes weekly seminar schedule 
+announcements. CMattie implements Baar’s global workspace theory of 
+consciousness and some other cognitive theories concerning metacognition, 
+episodic memory, emotions, and learning. Thus, the CMattie project has its 
+cognitive science side (cognitive modeling) as well as its computer science side 
+(intelligent software). This paper describes a case study of the design and 
+implementation of modeling metacognition in software agents like CMattie by 
+using a classifier system.</P><B>
+<P align=justify>Keywords</B>: Agent architectures, Genetic algorithms, Software 
+agents, Cognitive modeling, Reinforcement learning</P>
+<P align=justify>&nbsp;</P><B>
+<P align=center>1 Introduction</P></B>
+<P align=justify>Software agents are software entities "living" and acting in a 
+real world software environment, such as an operating system, a network, or a 
+database system, and carrying out many tasks for humans. They sense their 
+environment thru their sensors, and act on that environment with their 
+effectors. Their actions effect what they sense in the future, and are in the 
+service of their own drives (Franklin and Graesser 1997). With the rapid 
+development in computer networks, database systems and operating systems in 
+recent years, developing software agents to manage resources in operating 
+systems and information retrieval in network environments, etc. has drawn much 
+more attention. Thus, the research on agent theories, architectures, mechanisms 
+and languages has become much more important.</P>
+<P align=justify>There is still some debate regarding exactly how to define 
+metacognition (Flavell 1976). However most researchers seem to agree that it 
+should include knowledge of one’s own knowledge and cognitive processes, and the 
+ability to actively monitor and consciously regulate them. The concepts of 
+self-monitoring, self-evaluation, self-regulation, self-control, 
+self-instruction, self-consciousness, and meta-attention all belong to 
+metacognition. Metacognition is very important for humans. It guides people to 
+select, evaluate, revise, and abandon cognitive tasks, goals, and strategies 
+(Hacker 1997). Implementing metacognition in software agents can be very 
+exciting and challenging. If we want to build more human-like software agents, 
+we need to build metacognition into them. By doing this, we provide agents a 
+meta-system that allows them to overcome internal disorders, to choose an 
+efficient strategy, and to self-regulate.</P>
+<P align=justify>Conscious Mattie (CMattie) is the successor of Virtual Mattie 
+(Franklin et al. 1996, Zhang et al. 1998, Song and Franklin forthcoming). 
+Virtual Mattie (VMattie) is a less intelligent clerical agent with the same 
+domain as CMattie. CMattie’s name derives from the fact that she implements the 
+global workspace theory of consciousness (Baars 1988 1997), along with some 
+other cognitive theories concerning metacognition, episodic memory, emotion, 
+learning, etc. Baar’s global workspace theory is a cognitive model of the human 
+conscious experience. CMattie is expected to be more intelligent, more flexible 
+and more adaptive than VMattie. Several functional modules are being added to 
+improve her performance. CMattie’s architecture and mechanisms make her "think" 
+and act more like humans do. This paper focuses on a case study of building 
+metacognition into CMattie.</P>
+<P align=justify>CMattie’s brain consists of two parts, the A-brain and the 
+B-brain (Minsky 1985). The A-brain performs all cognitive activities. Its 
+environment is the outside world, a dynamic, but limited, real world 
+environment. The B-brain, sitting on top of the A-brain, monitors and regulates 
+the A-brain. The B-brain performs all metacognitive activities, and its 
+environment is the A-brain, that is, the A-brain’s activities. Figure 1 depicts 
+an overview of CMattie’s architecture. In this paper, we will discuss only the 
+mechanism of the B-brain and the interaction between some relevant modules in 
+the A-brain and the B-brain. We describe a case study of the design and 
+implementation of metacognition using a classifier system. This system allows 
+the B-brain to satisfy one of the meta-drives of the B-brain, "Stopping any 
+endless loop in which the A-brain finds itself." The endless loop here means 
+that the A-brain repeats itself in an oscillatory fashion. In particular, the 
+B-brain monitors the understanding process of the A-brain, and acts when any 
+oscillation problem occurs. The classifier system allows the B-brain to monitor, 
+to act, and to learn a correct action to stop an endless loop in the A-brain. 
+</P>
+<P align=justify><IMG height=246 src="" width=315></P>
+<P align=center>Figure 1: Overview of CMattie’s Architecture</P>
+<P align=justify>&nbsp;</P><B>
+<P align=center>2 Problems</P></B>
+<P align=justify>Metacognition plays an important role in reading comprehension 
+in humans. Metacognitive monitoring and regulation increase the degree of one’s 
+understanding (Ortero 1997). CMattie’s reading comprehension consists of 
+understanding incoming email messages concerning seminars in natural language. 
+Metecognition directs CMattie to a higher degree of understanding in that she 
+can handle oscillation problems during her understanding phase. </P>
+<P align=justify>At present, CMattie's natural language understanding occurs in 
+two stages (Zhang et al. 1998).<SUP> </SUP>First, the incoming message is 
+classified as one of the nine message types. This job is done with the help of 
+the slipnet (Hofstadter and Mitchell 1994), an associative memory (see Figure 1 
+and Figure 3). The nine message types are: Initiate a seminar, Speaker topic, 
+Cancel a seminar session, Conclude a seminar, Change of time, Change of place, 
+Change of topic, Add to mailing list, and Remove from mailing list. For a given 
+incoming message, the nine message-type nodes in the slipnet will have different 
+activation levels. The one with the highest activation level is selected as the 
+proposed message type, a "winner takes all" strategy. But all the other 
+message-type nodes retain their activations and are candidates for the next 
+selection, if the current winner proves to be wrong. The appropriate template is 
+then chosen based on the message type, and placed in the perceptual workspace 
+(see Figure 1). Each message type corresponds to one template. Different message 
+types have different slots in their templates. Figure 2 shows the Speaker-Topic 
+Message template. Codelets (processors) then begin to fill the slots (e.g. 
+speaker name, title of the talk, time of the seminar, date, place, email address 
+of sender, etc.) in the template. If any mandatory slots (e.g. speaker name) are 
+finally not filled, the chosen template, and therefore the proposed message 
+type, is not correct. So the message type with the next highest activation level 
+is chosen as the new proposed message type, the corresponding template is 
+chosen, and its slots are filled. The process repeats until there is a proposed 
+message type with all the mandatory template slots filled. This proposed message 
+type is correct and so is the information in the template. The A-brain performs 
+all the above activities. But if CMattie’s A-brain tries to understand an 
+irrelevant message and does not realize that she does not have enough knowledge 
+to do so, the B-brain takes over. It detects the situation and does something to 
+prevent her from repeatedly looking for a message type. For example, a one-node 
+loop could continually circle around a single message type. A classifier system 
+can act as the action selection mechanism for the B-brain. In this particular 
+case, the B-brain monitors whether there is an oscillatory thinking (endless 
+loop) during the A-brain’s understanding process, and learns how much activation 
+to send to the nine message-type nodes in the slipnet so that the endless loop 
+is stopped. Figure 3 depicts how the B-brain interacts with the A-brain during 
+the understanding process.</P>
+<P align=justify>&nbsp;</P>
+<P align=center><IMG height=228 src="" width=267></P>
+<P align=center>Figure 2: Speaker-topic Message Template </P>
+<P align=center>(Italic shows mandatory slots)</P>
+<P>&nbsp;</P>
+<P align=center><B>3 Mechanism of the B-brain</P></B>
+<P align=justify>A classifier system (Holland and Reitman, 1978) is an adaptive 
+system that learns to cope with an environment. Condition-action rules are coded 
+as fixed-length string rules (classifiers) and can be evolved using genetic 
+algorithms (Holland 1975). The Classifier System in the B-brain is composed of 
+several modules: Inner Perception, Encoder, Message List, Classifier Store, 
+Decoder, Evaluator, Genetic Algorithm and Inner Actions (see the B-brain in 
+figure 3).</P>
+<P align=justify>&nbsp;</P>
+<P align=justify><IMG height=292 src="" width=316></P>
+<DIR>
+<DIR>
+<P>Figure 3: Interaction between the A-brain and the B-brain during the 
+Understanding Process</P></DIR></DIR><B>
+<P align=justify>The Inner Perception Module</B> implements metacognitive 
+monitoring. It consists of sensors and detectors. Detectors differ from sensors 
+in that they do some inferences. Sensors get the raw data from the A-brain, and 
+detectors put them into internal representations. For example, sensors provide 
+information about the current proposed message type or trial template during the 
+understanding process in the A-brain, and detectors check whether there is a 
+loop in the understanding process. So perception can be conceptualized as 
+sensation plus inference. In our case, an inner percept could be of a three-node 
+loop, or a nine-node loop, etc. The inner perception is the B-brain’s internal 
+representation of the current state of the A-brain. </P>
+<P align=justify>An inner percept is then fed to <B>the Encoder</B> of the 
+classifier system. The Encoder will encode it to a finite-length string. The 
+B-brain can have ten percepts in binary representation. No loop is encoded as 
+0000, a one-node loop as 0001, a two-node loop as 0010, etc. After an inner 
+percept is encoded as a string percept, it is put in the <B>Message List</B>. 
+This string percept is actually the environment message (or the current state of 
+the A-brain sensed by the B-brain). </P><B>
+<P align=justify>The classifier store</B> contains a population of classifiers. 
+Each classifier consists of a condition, an action and a strength, such as 0100 
+: 001011011110100110, 3.3333. The condition part is a template capable of 
+matching internal string percepts, 0000, 0001, 0010, 0011, 0100, 0101, 0110, 
+0111, 1000, 1001. The action part consists of sending activation to each 
+message-type node in the A-brain. There are four different levels of activation: 
+low (00), medium low (01), medium high (10), high (11). So the length of an 
+action string is 2*9=18. (nine message-type nodes, each needing 2 bits to 
+represent four levels of activation). The strength serves as a performance 
+measure of the classifier, and ranges from 0 to 9. Since the lengths of the 
+condition part and action part are 4 and 18 respectively, the total number of 
+possible classifiers, ignoring strength, is <IMG height=18 src="" width=22>. The 
+above classifier is interpreted as "if the percept is a four-node loop, then 
+send low activation to initiate-seminar node, medium high activation to 
+speaker-topic node, etc., and this classifier has strength 3.3333." </P>
+<P align=justify>An initial classifier population of thirty is randomly 
+generated. The strength of each individual is assigned a single value, say 0.5. 
+No domain-specific heuristic knowledge is used to "prime" the initial 
+population. Notice that the strength of a classifier is not the actual 
+performance measure at first. In the beginning, the B-brain has no idea about 
+which rule is good, or which rule is bad. After it takes some actions on the 
+A-brain, and gets feedback (<B>The Evaluator</B> changes the strength of a fired 
+classifier), it will have a better idea. The B-brain gradually learns good 
+rules, in other words, a correct action taken on the A-brain in some 
+situations.</P>
+<P align=justify>At each time step only one classifier acts on the A-brain. Only 
+this classifier is evaluated and its strength updated. All the other unfired 
+classifiers keep their current strengths. New classifiers produced by crossover 
+take the average of their parents’ strengths. If the population is too large, 
+the chance of each classifier being fired is low. Convergence will slow down. 
+Experiments show that populations of size over forty are slow to converge, and 
+populations of size less than twenty take longer to stop a loop since there are 
+fewer possible structures. Thirty proved a suitable size for the population and 
+is used by this system. </P>
+<P align=justify>Once a classifier’s condition is matched to the current inner 
+percept, that classifier becomes a candidate to post its action to the 
+<B>Message List</B>. It is not possible to let all matched classifiers post 
+their actions there. The length of the message list in this system is ten. The 
+probability of a matched classifier posting its action in the message list is 
+proportional to its strength. The action on the message list that acts on the 
+A-brain is selected at random. A classifier with a high strength does not mean 
+its action is correct. It only means this action is close to the right action. 
+When a correct action is performed, the classifier system will stop since the 
+loop is stopped. On the other hand, some classifiers have high strength because 
+they make the loop smaller. However, we should not give them advantage over 
+others because they cannot stop the loop. If we choose the one with the highest 
+strength every time, some classifiers with better actions may not have a chance 
+to be fired, and a chance to be evaluated. In the classifier system, only when a 
+classifier is fired and its action is performed, it is evaluated. Randomly 
+selecting an action from the message list gives every active classifier a chance 
+to perform its action and to be evaluated. If no classifiers’ condition matches 
+a percept, then some classifiers with lower strengths are selected, and their 
+condition parts changed to match the current percept. </P>
+<P align=justify>A selected string action is decoded by <B>the Decoder.</B> As 
+discussed earlier, 00 is decoded as low, 01 medium low, 10 medium high, and 11 
+high. Later, <B>the Inner Actions Module</B> sends activation to the 
+message-type nodes in the A-brain. The actual activation levels are 0.5 (low), 
+1.5 (medium low), 2.5 (medium high) and 3.5 (high). The Evaluator decides 
+whether the action provided by a fired classifier is good or bad.</P><B>
+<P align=justify>The Evaluator</B> is implemented by a reinforcement learning 
+algorithm (Barto, Sutton, and Brouwer, 1981). It assigns reward or punishment to 
+classifiers based on the next inner percept sensed from the A-brain. Notice that 
+the B-brain has no teacher. In order to see how good or how bad its current 
+action is, it has to see what the next percept is. If after an action is taken, 
+the loop in the A-brain becomes smaller than before, this action gets some 
+reward. If the loop in the A-brain is stopped, this action is a correct action 
+and the classifier system stops. </P>
+<P align=justify>The bucket brigade algorithm (Holland and Reitman, 1978) is not 
+used in this situation since it is for distributing credit among classifiers. In 
+this system, a good action or a bad action results from a single classifier in 
+each sense-select-cycle. There is no need to distribute reward or 
+punishment.</P>
+<P align=justify>A sense-select-act cycle is a cycle during which the B-brain 
+senses from the A-brain, selects an action (provided by a fired classifier), and 
+performs the action on the A-brain. However, if the B-brain cannot stop a loop 
+in the A-brain in twenty sense-select-act cycles, the <B>Genetic Algorithm</B> 
+<B>Module</B> is activated to evolve new, possibly better classifiers. 
+Classifier’s strength is used as a fitness measure.</P>
+<P align=justify>Genetic algorithms are search algorithms based on natural 
+evolution. In this system, the selection is proportional to each classifier’s 
+strength. Only two classifiers with the same condition can participate in a 
+crossover. This allows searching for new actions for a given percept (condition 
+part). Suppose for a given situation in the A-brain, no current classifier has a 
+correct action, crossover may generate a new and correct action to deal with 
+such a situation. The crossover position (point) for each pair of classifiers is 
+randomly generated. The strength of the offspring is the average of its parents’ 
+strengths. The rates of crossover and mutation are 1.0 and 0.2 respectively in 
+this system.</P>
+<P align=justify>In addition to crossover and mutation, this classifier system 
+produces new classifiers using probability vectors (Baluja, Sukthankar, and 
+Hancock, 1997). A probability vector is used to maintain statistics about the 
+correct action string. One probability vector serves all the classifiers with a 
+given condition. There are eighteen numbers in each probability vector since 
+there are eighteen bits in the action part of the classifier. For example, the 
+probability vector for condition 0100 may start as: &lt;0.5, 0.5, 0.5, 0.5, 
+……….0.5&gt;. This means that, in the beginning, the B-brain has no idea about 
+the correct action string. It could be 0 or 1 in each bit position with the same 
+probability. After a classifier 0100 : 011000101100111010 is fired and an action 
+011000101100111010 acts on the A-brain, suppose the Evaluator gives a middle 
+reward to this action. The probability vector will be updated to close to 
+011000101100111010 since this action got a reward. It could be updated as 
+&lt;0.25, 0.75,0.75, 0.25, … &gt;. This means the first bit of the correct 
+action string would be more like 0, and second bit 1, etc. Later, if a 
+classifier 0100 : 111001101110111010 is fired and gets a punishment, the 
+probability vector will be updated in the opposite direction. The formula used 
+to update a probability vector is as follows: (Let LR represent the learning 
+rate and i the position in a vector or a string)</P>
+<P>Pvector[i] = Pvector[i]*(1-LR) + WinnerVector[i]*LR, when the winner gets a 
+reward.</P>
+<P>Pvector[i] = Pvector[i]*(1-LR) - WinnerVector[i]*LR, when the winner gets a 
+punishment.</P>
+<P align=justify>In this way, the B-brain takes every opportunity to learn the 
+probability vector, and keeps a record of such learning. The B-brain updates its 
+probability vector whenever an action is taken. Thus the new classifiers 
+produced by using probability vectors are more likely to be correct.</P>
+<P align=justify>The system keeps nine different probability vectors, one for 
+each of the nine conditions. When a new classifier is generated from a 
+probability vector, its condition is then associated with the vector. Its action 
+has a 1 in a particular location with the probability found in that location in 
+the vector. The strength of the new classifier is the average strength of the 
+population.</P>
+<P align=justify>In most GA-based applications, every individual in the 
+population is evaluated at every time step (or generation). In a classifier 
+system, only one individual is chosen and evaluated. So the B-brain must take 
+every opportunity to learn from the feedback of each action. The probability 
+vectors are very helpful in keeping track of what a right action should be. They 
+help the B-brain to learn quickly.</P>
+<P align=justify>To keep the population at a constant size, new classifiers 
+replace similar members with lower strengths (De Jong 1975). </P>
+<P align=justify></P><B>
+<P align=center>4 Experimental Results</P></B>
+<P align=justify>The system is implemented in JAVA on a Unix workstation. During 
+twenty test runs of the classifier system, on average, the B-brain learned to 
+stop an oscillatory thinking in the A-brain at the 70th sense-select-act-cycle. 
+The fastest case was at the 37th cycle, and the slowest at the 279th cycle. The 
+average clock time for each run is about two minutes. </P>
+<P align=justify>By an environment, in this context, we mean a particular 
+situation in which an oscillatory thinking (endless loop) is going on in the 
+A-brain during the understanding process. The nine message-type nodes in the 
+slipnet have certain activation levels. The B-brain tries to stop the endless 
+loop by sending different levels of activation to the message-type nodes. In 
+different environments, the A-brain reacts differently to the inner actions from 
+the B-brain. Since the B-brain evaluates classifiers based on any change of the 
+looping state in the A-brain, the A-brain indirectly provides reinforcement to 
+the B-brain. Working in an environment allows the B-brain to find a classifier 
+to stop the endless loop in this particular situation. </P>
+<P align=justify>The system was tested in two different environments. In both 
+environments, the B-brain successfully learned a that could stop the endless 
+loop classifier in about the 70th sense-select-act cycle.</P><FONT size=2>
+<P align=justify><A name=_946469684><A name=_946475075><A name=_946475348><A 
+name=_946475449><A name=_946475580><A 
+name=_946475602></A></A></A></A></A></A></FONT><IMG height=190 src="" 
+width=345><IMG height=130 src="" width=316></P>
+<P align=justify>Figure 5: Average Strength of the population on Five Runs </P>
+<P align=justify>(in Environment 1)</P>
+<P align=justify>&nbsp;</P>
+<P align=justify>We chose five runs from environment 1 and three runs from 
+environment 2 to illustrate the winning classifiers’ strength and the average 
+strength of the population at different cycles (shown in Figures 4, 5, 6, and 
+7). As discussed earlier, at each sense-select-act cycle, one classifier is 
+chosen as the winner and its action is taken on the A-brain. Later it is 
+evaluated and assigned a strength (fitness). In both environment 1 and 
+environment 2, we found that the average strength of the population increased 
+with more sense-select-act cycles. This indicates that the average performance 
+of individual classifiers in the population increased. The overall trend of the 
+winning classifier’s strength also increased with more sense-select-act cycles, 
+but sometimes it went down for a while before finally going up.</P>
+<P align=justify><IMG height=201 src="" width=338><A name=_946475646></A><IMG 
+height=169 src="" width=327> Table 1 and Table 2 show the learned correct 
+classifiers that stopped the endless loops in the A-brain on five different runs 
+in environment 1 and three different runs in environment 2. They also show the 
+sense-select-cycle at which the right actions are performed on each run. </P>
+<P align=justify>&nbsp;</P>
+<P align=justify>Table 1: Learned Classifiers on Five Runs (in Environment 
+1)</P>
+<TABLE borderColor=#000000 cellSpacing=1 cellPadding=7 width=294 border=1>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width="16%">&nbsp;</TD>
+    <TD vAlign=top width="25%">
+      <P align=center>Cycle</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=center>Learned Correct Classifier</P></TD></TR>
+  <TR>
+    <TD vAlign=top width="16%">
+      <P align=justify>Run1</P></TD>
+    <TD vAlign=top width="25%">
+      <P align=justify>73</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=justify>0001 : 000000000000000000</P></TD></TR>
+  <TR>
+    <TD vAlign=top width="16%">
+      <P align=justify>Run2</P></TD>
+    <TD vAlign=top width="25%">
+      <P align=justify>57</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=justify>0101 : 000000000000000000</P></TD></TR>
+  <TR>
+    <TD vAlign=top width="16%">
+      <P align=justify>Run3</P></TD>
+    <TD vAlign=top width="25%">
+      <P align=justify>67</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=justify>0011 : 000000000000000000</P></TD></TR>
+  <TR>
+    <TD vAlign=top width="16%">
+      <P align=justify>Run4</P></TD>
+    <TD vAlign=top width="25%">
+      <P align=justify>70</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=justify>0001 : 000000000000000000</P></TD></TR>
+  <TR>
+    <TD vAlign=top width="16%">
+      <P align=justify>Run5</P></TD>
+    <TD vAlign=top width="25%">
+      <P align=justify>69</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=justify>0010 : 000000000000000000</P></TD></TR></TBODY></TABLE>
+<P align=justify>&nbsp;</P>
+<P align=justify>Table 2: Learned Classifier on Three Runs (in Environment 
+2)</P>
+<TABLE borderColor=#000000 cellSpacing=1 cellPadding=7 width=294 border=1>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width="16%">&nbsp;</TD>
+    <TD vAlign=top width="24%">
+      <P align=center>Cycle</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=center>Learned Correct Classifier</P></TD></TR>
+  <TR>
+    <TD vAlign=top width="16%">
+      <P align=justify>Run1</P></TD>
+    <TD vAlign=top width="24%">
+      <P align=justify>45</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=justify>0011 : 010000000000000000</P></TD></TR>
+  <TR>
+    <TD vAlign=top width="16%">
+      <P align=justify>Run2</P></TD>
+    <TD vAlign=top width="24%">
+      <P align=justify>76</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=justify>0001 : 010000000000000000</P></TD></TR>
+  <TR>
+    <TD vAlign=top width="16%">
+      <P align=justify>Run3</P></TD>
+    <TD vAlign=top width="24%">
+      <P align=justify>69</P></TD>
+    <TD vAlign=top width="59%">
+      <P align=justify>0101 : 010000000000000000</P></TD></TR></TBODY></TABLE>
+<P align=justify>&nbsp;</P>
+<P align=justify>In environment 1, the correct action is that the B-brain should 
+send very low activation (0.5) to every message-type-node in the slipnet in any 
+looping state (one-node loop, etc) so as to get rid of the endless loop. For 
+example, on run 1, at 73rd sense-select-act cycle, the B-brain learned a correct 
+classifier: 0001: 000000000000000000. This means if there is a one-node loop in 
+the A-brain, then send 0.5 activation to all the message-type nodes in the 
+slipnet. </P>
+<P align=justify>In environment 2, the correct action is that the B-brain should 
+send medium low (1.5) activation to seminar-initial-message-type node and very 
+low activation (0.5) to the other eight message-type-nodes in the slipnet in any 
+looping states. If all the message types have low activation (below certain 
+threshold), the A-brain can realize that the incoming email is an irrelevant 
+message and won’t oscillate.</P>
+<P align=justify>&nbsp;</P><B>
+<P align=center>5 Conclusions and Future Work</B> </P>
+<P align=justify>In this paper, we have used a classifier system to implement 
+the B-brain in order to solve the oscillatory thinking problem in the A-brain. 
+From this case study, we can draw the following conclusions:</P>
+<UL>
+  <P align=justify>
+  <LI>The classifier system proved to be a powerful on-line learning control 
+  mechanism, that learns and adapts to its environment.
+  <P></P>
+  <P align=justify></P>
+  <LI>A classifier system may be a suitable mechanism for learning metacognitive 
+  knowledge by metacognitive monitoring and regulation. 
+  <P></P>
+  <P align=justify></P>
+  <LI>Classifier systems may converge more slowly than other GA-based 
+  applications since only one action is performed and evaluated at each 
+  sense-select-act cycle. 
+  <P></P>
+  <P align=justify></P>
+  <LI>A good way to scale a classifier system is to make it a multiple 
+  classifier system so that it distributes several learning tasks to several 
+  individual classifier systems. 
+  <P></P>
+  <P align=justify></P>
+  <LI>Using probability vectors is an efficient approach to speeding up learning 
+  in a classifier system. 
+  <P></P></LI></UL>
+<P align=justify>In future work we will scale this system up to monitor and 
+regulate more activities in the A-brain. We also want to explore a fuzzy 
+classifier system and compare it with a classifier system.</P><B>
+<P align=justify>&nbsp;</P>
+<P align=center>References </P>
+<DIR></B>
+<P align=justify>Baluja, Sukthankar, and Hancock (1997) Prototyping Intelligent 
+Vehicle Modules Using Evolutionary Algorithms<I>,</I> in Dasgupta, D. and 
+Michalewica, Z. (Eds.) <I>Evolutionary Algorithms in Engineering 
+Applications</I>, Springer-Veriag, 1997, pp 241-257. </P>
+<P align=justify>Baars, Bernard, J. (1988) <I>A Cognitive Theory of 
+Consciousness</I>, Cambridge: Cambridge University Press.</P>
+<P align=justify>Baars, Bernard, J. (1997) <I>In the Theater of 
+Consciousness</I>, Oxford: Oxford University Press, Inc.</P>
+<P align=justify>Barto, A.G., Sutton, R. S., and Brouwer, P. S. (1981)<I>. 
+</I>Associative Search Network: a Reinforcement Learning Associative Memory, 
+<I>Biological Cybernetics</I>, 40(3): 201-211. </P>
+<P align=justify>De Jong, K.A. (1975) An Analysis of the Behavior of a Class of 
+Genetic Adaptive Systems<I>,</I> Doctoral dissertation, University of Michigan. 
+</P>
+<P align=justify>Flavell, John, H. (1976) Metacognitive Aspects of Problem 
+Solving, In L.B. Resnick (Ed.), <I>The Nature of In Intelligence. </I>Hillsdale, 
+NJ: Erlbaum.</P>
+<P align=justify>Franklin, Stan (1995), <I>Artificial Minds, </I>Cambridge: MA: 
+MIT Press.</P>
+<P align=justify>Franklin, Stan, Art Graesser, Brent Olde, Hongjun Song, and 
+Aregahegn Negatu (1996) Virtual Mattie—an Intelligent Clerical Agent, <I>AAAI 
+Symposium on Embodied Cognition and Action</I>, Cambridge MA.</P>
+<P align=justify>Franklin, Stan and Art Graesser (1997), Is it an Agent, or just 
+a Program?: A Taxonomy for Autonomous Agents, <I>Intelligent Agents III</I>, 
+Springer-Verlag, 21-35</P>
+<P align=justify>Gilber, A.H. and Bell, F. (1995), Adaptive Learning of Process 
+Control and Profit Optimization Using a Classifier System, <I>Evolutionary 
+Computation</I> 3(2): 177-198, MIT Press.</P>
+<P align=justify>Goldberg, David, E., (1989) <I>Genetic Algorithms in Search, 
+Optimization and Machine Learning</I>, Addison Wesley Longman, Inc.</P>
+<P align=justify>Hacker, Douglas, (1997), Metacognitive: Definitions and 
+Empirical Founditions, In Hacker, D., Dunlosky, J., Graesser A. (Eds.) 
+<I>Metacogniton in Educational Theory and Practice.</I> Hillsdale, NJ: Erlbaum, 
+in press. </P>
+<P align=justify>Hofstadter, D. R. and M. Mitchell, (1994), The Copycat Project: 
+A model of mental fluidity and analogh-making. In Holyoak, K.J. &amp; Barnden, 
+J. A. (Eds.) <I>Advances in Connectionist and Neural Computation Theory</I>, 
+Vol. 2: Analogical connections. Norwood, NJ: Ablex.</P>
+<P align=justify>Holland, J. H. (1975). <I>Adaptation in Natural and Artificial 
+Systems</I>. Ann Arbor: University of Michigan Press.</P>
+<P align=justify>Holland, J. H. and Reitman, J. S. (1978). Cognitive Systems 
+Based on Adaptive Algorithms<I>.</I> In D. A. Waterman &amp; F. Hayey-Roth 
+(Eds<I>.), Pattern Directed Inference Systems</I> (pp. 313 -329). New York: 
+Academic Press.</P>
+<P align=justify>Maes, Pattie (1990), How to do the right thing<I>, Connection 
+Science</I>, 1:3.</P>
+<P align=justify>Minsky, Marvin (1985), <I>Society of Mind,</I> New York: Simon 
+and Schuster.</P>
+<P align=justify>Ortero, Jose (1997) Influence of Knowledge Activation and 
+Context on Comprehension Monitoring of Science Texts, In Hacker, D., Dunlosky, 
+J., Graesser A. (Eds.) <I>Metacogniton in Educational Theory and Practice.</I> 
+Hillsdale, NJ: Erlbaum, in press.</P>
+<P align=justify>Sloman, Aaron (1996) What Sort of Architecture is Required for 
+a Human-like Agent?, <I>Cognitive Modeling Workshop</I>, AAAI96, Portland 
+Oregon.</P>
+<P align=justify>Song, Hongjun and Stan Franklin (forthcoming<I>), </I>Action 
+Selection Using Behavior Instantiation</P>
+<P align=justify>Wilson, Stewart W. (1994), ZCS: A Zeroth Level Classifier 
+System, <I>Evolutionary Computation</I>, MIT Press.</P>
+<P align=justify>Zhang, Zhaohua, Stan Franklin, Brent Olde, Art Graesser and Yun 
+Wan (1998), Natural Language Sensing for Autonomous Agents<I> </I>In Proceedings 
+of <I>International IEEE Joint Symposia on Intelligence and 
+Systems’98</I>.</P></DIR></BODY></HTML>

@@ -1,0 +1,45 @@
+ALTTXT V1.2
+BY: BRIAN GOSSELIN OF SCRIPTASYLUM.COM
+
+-ADDED FADING EFFECT FOR IE4+ AND NS6+ ONLY
+-OPTIMIZED THE CODE A BIT. 
+
+INSTRUCTIONS:
+
+STEP 1: Copy and paste the below code block into the <head> section of your page:
+
+<style>
+<!--
+.navtext {
+width:150px;
+font-size:12pt;
+border-width:2px;
+border-style:outset;
+border-color:darkgray;
+layer-background-color:tan;
+background-color:tan;
+color:black;
+}
+-->
+</style>
+
+<script  language="javascript" src="alttxt.js">
+
+//Popup info box III (By Brian Gosselin, http://scriptasylum.com/bgaudiodr/)
+//Script featured on Dynamicdrive.com
+//For full source, TOS, and 100's more DHTML scripts, visit http://www.dynamicdrive.com
+
+</script>
+
+STEP 2: Add the below <div> tag to the end of your document:
+
+<div id="navtxt" class="navtext" style="position:absolute; top:-100px; left:0px; visibility:hidden">
+</div>
+
+
+STEP 3: Having done the above, use a setup similar to the below to add a popup description to each link(s):
+
+<a href="http://www.dynamicdrive.com" onmouseover="writetxt('Welcome to Dynamic Drive, the primier DHTML code library online!')" onmouseout="writetxt(0)">Dynamic Drive</a>
+
+
+STEP 4: Finally, be sure to upload the accompanying alttxt.js file into your webpage directory.

@@ -1,0 +1,620 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0047)http://www.msci.memphis.edu/~franklin/AAEI.html -->
+<HTML><HEAD><TITLE>Autonomous Agents as Embodied AI</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2713.1100" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<H4>Cybernetics and Systems, 28:6(1997) 499-520</H4>
+<H2 align=center><BR>Autonomous Agents as Embodied AI</H2>
+<H3 align=center>by <A href="http://www.msci.memphis.edu/~franklin/">Stan 
+Franklin</A></H3>
+<H3>Abstract</H3>
+<P><BR>This paper is primarily concerned with answering two questions: What are 
+necessary elements of embodied architectures? How are we to proceed in a science 
+of embodied systems? Autonomous agents, more specifically cognitive agents, are 
+offered as the appropriate objects of study for embodied AI. The necessary 
+elements of the architectures of these agents are then those of embodied AI as 
+well. A concrete proposal is presented as to how to proceed with such a study. 
+This proposal includes a synergistic parallel employment of an engineering 
+approach and a scientific approach. It also proposes the exploration of design 
+space and of niche space. A general architecture for a cognitive agent is 
+outlined and discussed.<BR><BR></P>
+<H3>Introduction</H3>
+<P><BR>This essay is motivated by the call for papers for the <A 
+href="http://www.tandf.co.uk/jnls/cbs.htm">Cybernetics and Systems</A>' Special 
+issue on <A 
+href="http://www.ai.univie.ac.at/~erich/cascall.html">Epistemological Aspects of 
+Embodied AI and Artificial Life</A>. Citing "foundational questions concern[ing] 
+the nature of human thinking and intelligence," specific questions are posed, 
+among them the following:<BR><BR>Q1) "Is it necessary for an intelligent system 
+to possess a body...?"<BR>Q2) "What are necessary elements of embodied 
+architectures?"<BR>Q3) "[W]hat drives these systems?"<BR>Q4) "How are we to 
+proceed in a science of embodied systems?"<BR>Q5) "[H]ow is [meaning] related to 
+real objects?"<BR>Q6) "What sort of ontology is necessary for describing and 
+constructing knowledge about systems?"<BR>Q7) "Which ontologies are created 
+within the systems...?<BR><BR>Further, "concrete proposals on how to proceed" 
+with Embodied AI research are encouraged. <BR><BR>The intent here is to speak to 
+each of these questions, with relatively lengthy discussions of Q2 and Q4, and 
+brief responses to the others. And, a concrete proposal will be made on how to 
+proceed. Much of what follows will also apply to <A 
+href="http://alife.santafe.edu/">Artificial Life</A> research.<BR><BR>Here are 
+my short answers to the above questions, offered as appetizers for the main 
+courses below.<BR><BR>A1) Software systems with no body in the usual physical 
+sense can be intelligent. But, they must be embodied in the situated sense of 
+being autonomous agents structurally coupled with their environment.<BR><BR>A2) 
+An embodied architecture must have at least the primary elements of an 
+autonomous agent, sensors, actions, drives, and an action selection mechanism. 
+Intelligent systems typically must have much more.<BR><BR>A3) These systems are 
+driven by built-in or evolved-in drives and the goals generated from 
+them.<BR><BR>A4) We pursue a science of embodied systems by developing theories 
+of how mechanisms of mind can work, making predictions from the theories, 
+designing autonomous agent architectures that supposedly embody these theories, 
+implementing these agents in hardware or software, experimenting with the agents 
+to check our predictions, modifying our theories and architectures, and looping 
+ad infinitum.<BR><BR>A5) Real objects exist, as objects, only in the "minds" of 
+autonomous agents. Their meanings are grounded in the agent's perceptions, both 
+external and internal.<BR><BR>A6) An ontology for knowledge about autonomous 
+agents will include sensors, actions, drives, action selection mechanisms, and 
+perhaps representations, goals and subgoals, beliefs, desires, intentions, 
+emotions, attitudes, moods, memories, concepts, workspaces, plans, schedules, 
+various mechanisms for generating some of the above, etc. This list does not 
+even begin to be exhaustive.<BR><BR>A7) Each autonomous agent uses it own 
+ontology which is typically partly built-in or evolved-in and partly constructed 
+by the agent. <BR><BR>My concrete proposal on how to proceed includes an 
+expanded form of the cycle outlined in A4 augmented by Sloman's notion of 
+exploration of design space and niche space (1995). <BR><BR>Now for the main 
+courses.<BR><BR></P>
+<H3>The Action Selection Paradigm of Mind</H3>
+<P><BR>Classical AI, along with cognitive science and much of embodied AI has 
+developed within the cognitivist paradigm of mind (Varela et al 1991). This 
+paradigm takes as its metaphor mind as a computer program running on some 
+underlying hardware or wetware. It thus sees mind as information processing by 
+symbolic computation, that is rule-based symbol manipulation. Horgan and Tiensen 
+give a careful account of the fundamental assumptions of this paradigm (1996). 
+Serious attacks on the cognitivist paradigm of mind have been mounted from 
+outside by neuroscientists, philosophers and roboticists. (Searle, J. 1980, 
+Edelman 1987, Skarda and Freeman 1987, Reeke and Edelman 1988, Horgan and 
+Tiensen 1989, Brooks 1990, Freeman and Skarda 1990).<BR><BR>Other competing 
+paradigms of mind include the connectionist paradigm (Smolensky 1988, Varela et 
+al 1991, Horgan and Tiensen 1996) and the enactive paradigm (Maturana 1975, 
+Maturana and Varela 1980, Varela et al 1991). The structural coupling invoked in 
+A1 above derives from the enactive paradigm. The connectionist paradigm offers a 
+brain metaphor of mind rather than a computer metaphor.<BR><BR>The action 
+selection paradigm of mind (<A 
+href="http://www.msci.memphis.edu/~franklin/aagents.html">Franklin 1995</A>), on 
+which this essay is based, sprang from observation and analysis of various 
+embedded AI systems. Its major tenets follow:<BR><BR>AS1) The overriding task of 
+mind is to produce the next action.<BR><BR>AS2) Actions are selected in the 
+service of drives built in by evolution or design.<BR><BR>AS3) Mind operates on 
+sensations to create information for its own use.<BR><BR>AS4) Mind re-creates 
+prior information (memories) to help produce actions.<BR><BR>AS5) Minds tend to 
+be embodied as collections of relatively independent modules, with little 
+communication between them.<BR><BR>AS6) Minds tend to be enabled by a multitude 
+of disparate mechanisms.<BR><BR>AS7) Mind is most usefully thought of as arising 
+from the control structures of autonomous agents. Thus, there are many types of 
+minds with vastly different abilities.<BR><BR>These tenets will guide much of 
+the discussion below as, for example, A5 above will derive from AS3. As applied 
+to human minds, AS4 and AS5 can be more definitely asserted.<BR><BR>An action 
+produces a change of state in an environment (Luck and D'Inverno 1995). But not 
+every such change is produced by an action, for example the motion of a planet. 
+We say that the action of a hammer on a nail changes the environment, but the 
+hammer is an instrument not an actor. The action is produced by the carpenter. 
+Similarly, it's the driver who acts, not the automobile. In a more complex 
+situation it's the user that acts, not the program that produces payroll checks. 
+In an AI setting the user acts with the expert system as instrument. On the 
+other hand, a thermostat acts to maintain a temperature range.<BR><BR>Since 
+actions, in the sense meant here, are produced only by autonomous agents (see 
+below), AS1 leads us to think of minds as emerging from the architectures and 
+mechanisms of autonomous agents. Thus it seems plausible to seek answers to 
+"foundational questions concern[ing] the nature of human thinking and 
+intelligence" by studying the architectures, mechanisms, and behavior of 
+autonomous agents, even artificial agents such as autonomous robots and software 
+agents.<BR><BR></P>
+<H3>Autonomous Agents</H3>
+<P><BR>We've spoken several times of <A 
+href="http://www.msci.memphis.edu/~franklin/aagents.html">autonomous agents</A>. 
+What are they?<BR><BR>An autonomous agent is a system situated within and a part 
+of an environment that senses that environment and acts on it, over time, in 
+pursuit of its own agenda and so as to effect what it senses in the future (<A 
+href="http://www.msci.memphis.edu/~franklin/AgentProg.html">Franklin and 
+Graesser 1997</A>).<BR><BR>And what sorts of entities satisfy this definition? 
+The following figure illustrates the beginnings of a natural kinds taxonomy for 
+autonomous agents (Franklin and Graesser 1997).<BR><BR><IMG height=251 
+src="Autonomous Agents as Embodied AI_files/AAEI.image0.gif" width=464 
+align=bottom NATURALSIZEFLAG="3"><BR><BR><BR>With these examples in mind, let's 
+unpack the definition of an autonomous agent.<BR><BR>An environment for a human 
+will include some range of what we call the real world. For most of us, it will 
+not include subatomic particles or stars within a distant galaxy. The 
+environment for a thermostat, a particularly simple robotic agent, can be 
+described by a single state variable, the temperature. Artificial life agents 
+"live" in an artificial environment often depicted on a monitor (e.g. Ackley and 
+Littman 1992). Such environments often include obstacles, food, other agents, 
+predators, etc. <A 
+href="http://www.msci.memphis.edu/~franklin/sumpy.html">Sumpy</A>, a 
+task-specific software agent, "lives" in a UNIX file system (Song, Franklin and 
+Negatu 1996). Julia, an entertainment agent, "lives" in a MUD on the internet 
+(Mauldin 1994). Viruses inhabit DOS, Windows, MacOS, and even Microsoft Word. An 
+autonomous agent must be such with respect to some environment. Such 
+environments can be described in various ways, perhaps even as dynamical systems 
+(Franklin and Graesser 1997). Keep in mind that autonomous agents are, 
+themselves, part of their environments.<BR><BR>Human and animal sensors need no 
+recounting here. Robotic sensors include video cameras, rangefinders, bumpers or 
+antennae with tactile and sometimes chemical receptors (Brooks 1990, Beer 1990). 
+Artificial life agents use artificial sensors, some modeled after real sensors, 
+other not. Sumpy senses by issuing UNIX commands such as pwd or ls. <A 
+href="http://www.msci.memphis.edu/~franklin/vmattie.html">Virtual Mattie</A>, a 
+software clerical agent (Franklin et al, forthcoming) senses only incoming email 
+messages. Julia senses messages posted on the MUD by other users, both human and 
+entertainment agents. Sensor return portions of the environmental state to the 
+agent. Senses can be active or passive. Though all the senses mentioned above 
+were external, internal senses, proprioception, also is part of many agents' 
+design. Some might consider the re-creation of images from memory (see AS4 
+above) to be internal sensing.<BR><BR>Again, there's no need to discuss actions 
+of human, animal or even robots. Sumpy's actions consist of wandering from 
+directory to directory, compressing some files, backing up others, and putting 
+himself to sleep when usage of the system is heavy. Virtual Mattie, among other 
+things, corresponds with seminar organizers in English via email, sends out 
+seminar announcements and keeps a mailing list updated. Julia wanders about the 
+MUD conversing with occupants. Again, actions can be external or internal, such 
+as producing plans, schedules, or announcements. Every autonomous agent come 
+with a built-in set of primitive actions. Other actions, usually sequences of 
+primitive actions, can also be built in or can be learned.<BR><BR>The definition 
+of an autonomous agent requires that it pursue its own agenda. Where does this 
+agenda come from? Every autonomous agent must be provided with built-in (or 
+evolved-in) sources of motivation for its actions. I refer to these sources as 
+drives (see AS2 above). Sumpy has a drive to compress files when needed. Virtual 
+Mattie has a drive to get seminar announcements out on time. Drives may be 
+explicit or implicit. A thermostat's single drive is to keep the temperature 
+within a range. This drive is hardwired into the mechanism. Sumpy's four drives 
+are as hardwired as that of the thermostat, except that it's done in software. 
+My statement of such a drive describes a straightforward causal mechanism within 
+the agent. Virtual Mattie's six or so drives are explicitly represented as 
+drives within her architecture. They still operate causally, but not in such a 
+straightforward manner. An accounting of human drives would seem a useful 
+endeavor.<BR><BR>Drives give rise to goals that act to satisfy the drives. A 
+goal describes a desired specific state of the environment (Luck and D'Inverno 
+1995). I picture the motivations of a complex autonomous agent as comprising a 
+forest in the computational since. Each tree in this forest is rooted in a drive 
+which branches to high-level goals. Goals can branch to lower level subgoals, 
+etc. The leaf nodes in this forest comprise the agent's agenda.<BR><BR>Now that 
+we can recognize an autonomous agent's agenda, the question of pursuing that 
+agenda remains. We've arrived at action selection (see AS1 above). Each agent 
+must come equipped with some mechanism for choosing among its possible actions 
+in pursuit of some goal on its agenda. These mechanisms vary greatly. Sumpy is 
+named after it subsumption architecture (Brooks 1990a). One of its layers uses 
+fuzzy logic (Yager and Filev 1994). Some internet information seeking agents use 
+classical AI, say planning (Etzioni and Weld 1994). Virtual Mattie selects her 
+actions via a considerably augmented form of Maes' behavior net (1990). This 
+topic will be discussed in more detail below.<BR><BR>Finally, an autonomous 
+agent must act so as to effect its possible future sensing. This requires that 
+the agent not only be in and a part of an environment, but that it be 
+structurally coupled to that environment (Maturana 1975, Maturana and Varela 
+1980, Varela et al 1991). (See also A1 above.) Structural coupling, as applied 
+here, means that the agent's architecture and mechanisms must mesh with its 
+environment so that it senses portions relevant to its needs and can act so as 
+to meet those needs.<BR><BR>Having unpacked the definition of autonomous agent, 
+we can think of it as specifying the appropriate objects of study of Embodied 
+AI.<BR><BR></P>
+<H3>CAAT</H3>
+<P><BR>In the early days of AI there was much talk of creating human level 
+intelligence. As the years passed and the difficulties became apparent, such 
+talk all but disappeared as most AI researchers wisely concentrated on producing 
+some small facet of human intelligence. Here I'm proposing a return to earlier 
+goals.<BR><BR>Human cognition typically includes short and long term memory, 
+categorizing and conceptualizing, reasoning, planning, problem solving, 
+learning, creativity, etc. An autonomous agent capable of many or even most of 
+these activities will be referred to as a cognitive agent. (Sloman calls such 
+agents "complete" in one place (19??), and refers to "a human-like intelligent 
+agent (1995) or to "autonomous agents with human-like capabilities" in another 
+(Sloman and Poli 1995). Riegler's dissertation is also concerned with "the 
+emergence of higher cognitive structures"(1994).) Currently, only humans and, 
+perhaps, some higher animals seem to be cognitive agents.<BR><BR>Recently 
+designed mechanisms for cognitive functions as mentioned above include, 
+Kanerva's sparse distributed memory (1988), Drescher's schema mechanism (1988, 
+1991), Maes' behavior networks (1990), Jackson's pandemonium theory, Hofstadter 
+and Mitchell's copycat architecture (1994, Mitchell 1993), and many others. Many 
+of these do a fair job of implementing some one cognitive function. <BR><BR>The 
+strategy suggested here proposes to fuse sets of these mechanisms to form 
+control structures for cognitive mobile robots, cognitive artificial life 
+creatures, and cognitive software agents. Virtual Mattie is an early example of 
+this strategy. Her architecture extends both Maes' behavior networks and the 
+copycat architecture and fuses them for action selection and 
+perception.<BR><BR>Given a control architecture for an autonomous agent, we may 
+theorize that human and animal cognition works as does this architecture. Since 
+the specification of every control architecture in this way underlies some 
+theory, the strategy set forth in the last paragraph also entails the creation 
+of theories of cognition. For example, the functioning of sparse distributed 
+memory gives rise to a theory of how human memory operates. Such theories, 
+arising from AI, hopefully can help to explain and predict human and animal 
+cognitive activities.<BR><BR>Thus the acronym <A 
+href="http://www.msci.memphis.edu/~franklin/CAAT_position_paper.html">CAAT</A>, 
+cognitive agents architecture and theory, arises. The CAAT strategy of designing 
+cognitive agent architectures and creating theories from them leads to a loop of 
+tactical activities as follows: <BR><BR>SL1) Design a cognitive agent 
+architecture. <BR>SL2) Implement this cognitive architecture on a computer. 
+<BR>SL3) Experiment with this implemented model to learn about the functioning 
+of the design. <BR>SL4) Use this knowledge to formulate the cognitive theory 
+corresponding to the cognitive architecture. <BR>SL5) From this theory derive 
+testable predictions. <BR>SL6) Design and carry out experiments to test the 
+theory using human or animal subjects. <BR>SL7) Use the knowledge gained from 
+the experiments to modify the architecture so as to improve the theory and its 
+predictions.<BR><BR>We've just seen the science loop of the CAAT strategy, whose 
+aim is understanding and predicting human and animal cognition with the help of 
+cognitive agent architectures. The engineering loop of CAAT aims at producing 
+intelligent autonomous agents (mobile robots, artificial life creatures, 
+software agents) approaching the cognitive abilities of humans and animals. The 
+means for achieving this goal can be embodied in a branch parallel to the 
+sequence of activities described above. The first three items are identical. 
+<BR><BR>EL1) Design a cognitive agent architecture. <BR>EL2) Implement this 
+cognitive architecture on a computer. <BR>EL3) Experiment with this implemented 
+model to learn about the functioning of the design. <BR>EL4) Use this knowledge 
+to design a version of the architecture capable of real world (including 
+artificial life and software environments) problem solving. <BR>EL5) Implement 
+this version in hardware or software. <BR>EL6) Experiment with the resulting 
+agent confronting real world problems. <BR>EL7) Use the knowledge gained from 
+the experiments to modify the architecture so as to improve the performance of 
+the resulting agent. <BR><BR>The science loop and the engineering loop will 
+surely seem familiar to both scientists and engineers. So, why are they 
+included? Because when applied to autonomous agents synergy results from the 
+subject matter. We've seen that each autonomous agent architecture gives rise to 
+(at least one) theory, the theory that says humans and animals do it like this 
+architecture does. Thus the engineering loop can leap out and influence theory. 
+But, theory also constrains architecture. A theory can give rise to (usually 
+many) architectures that implement the theory. Thus gains in the science loop 
+can leap out and influence the engineering loop. Synergy can occur.<BR><BR>This 
+section expands on short answer A4 above. It also constitutes the first part of 
+my proposal on how to proceed with research in embodied AI. The second part will 
+appear below. Now, how do we design cognitive agents?<BR><BR></P>
+<H3>Design Principles</H3>
+<P><BR>Not much is known about how to design cognitive agents, though there have 
+been some attempts to build one (Johnson and Scanlon 1987). Theory guiding such 
+design is in an early stage of development. Brustiloni has offered a theory of 
+action selection mechanisms (1991, Franklin 1995), which gives rise to a 
+hierarchy of behavior types. Albus offers a theory of intelligent systems with 
+much overlap to cognitive agents (1991, 1996). Sloman and his cohorts are 
+working diligently on a theory of cognitive agent architectures, with a high 
+level version in place (1995 and references therein). We'll encounter a bit of 
+this theory below. Also, Baars' global workspace model of consciousness (1988), 
+though intended as a model of human cognitive architecture, can be viewed as 
+constraining cognitive agent design. Here we see the synergy between the science 
+loop and the engineering loop in action. <BR><BR>This section proposes design 
+principles, largely unrelated to each other, that have been derived from an 
+analysis of many autonomous agents. They serve to constrain cognitive agent 
+architectures and, so, will contribute to an eventual theory of cognitive agent 
+design.<BR><BR><STRONG>Drives:</STRONG><I> </I>Every agent must have built-in 
+drives to provide the fundamental motivation for its actions. This is simply a 
+restatement of A3 and of AS2 above. It's included here because autonomous agent 
+designers tend to hardwire drives into the agent without mentioning them 
+explicitly in the documentation and, apparently, without thinking of them 
+explicitly. An explicit accounting of an agent's drives should help one to 
+understand its architecture and it niche within its 
+environment.<BR><BR><STRONG>Attention:</STRONG> An agent in a complex 
+environment who has several senses may well need some attention mechanism to 
+help it focus on relevant input. Attending to all input may well be 
+computationally too expensive.<BR><BR><STRONG>Internal models: </STRONG>Model 
+the environment only when such models are needed. When possible depend on 
+frequent sampling of the environment instead. Modeling the environment is both 
+difficult and computationally expensive. Frequent sampling is typically cheaper 
+and more effective, when it will work at all. This principle has been enunciated 
+several times before (Brooks 1990a, Brustiloni 1991). 
+<BR><BR><STRONG>Coordination:</STRONG> In multi-agent systems, coordination can 
+often be achieved without the high cost of communication. We often think of 
+coordination of actions as requiring communication between the actors. Many 
+examples show this thought to be a myth. Again, frequent sampling of the 
+environment may serve as well or even better (<A 
+href="http://www.msci.memphis.edu/~franklin/coord.html">Franklin 
+forthcoming</A>).<BR><BR><STRONG>Knowledge:</STRONG> Build as much needed 
+knowledge as possible into the lower level of an autonomous agent's 
+architecture. Every agent requires knowledge of itself and of its environment in 
+order to act so as to satisfy its needs. Some of this knowledge can be learned. 
+Trying to learn all of it can be expected to be computationally intensive even 
+in simple cases (Drescher 1988). The better tack is to hardwire as much needed 
+knowledge as possible into the agent's architecture. This principle has also 
+been enunciated before (Brustiloni 1991). <BR><BR><STRONG>Curiosity:</STRONG> If 
+an autonomous agent is to learn in an unsupervised way, some sort of more or 
+less random behavior must be built in. Curiosity serves this function in humans, 
+and apparently in mammals. Autonomous agents typically learn mostly by internal 
+reinforcement. (The notion of the environment providing reinforcement is 
+misguided.) Actions in a particular context whose results move the agent closer 
+to satisfying some drive tend to be reinforced, that is made more likely to be 
+chosen again in that context. Actions whose results move the agent further from 
+satisfying a drive tend to be made less likely to be chosen again. In human and 
+many animals, the mechanisms of this reinforcement include pleasure and pain. 
+Every form of reinforcement learning must rely on some mechanism. Random 
+activity is useful when not solution to the current contextual problem is known, 
+and to allow the possibility of improving a known solution. (This principle 
+doesn't apply to observational only forms of learning such as that employed in 
+memory based reasoning (Maes 1994).<BR><BR><STRONG>Routines:</STRONG> Most 
+cognitive agents will need some means of transforming frequently used sequences 
+of actions into something reactive so that they run faster. Cognitive scientists 
+talk of becoming habituated. Computer scientists like the compiling metaphor. 
+One example is chunking in SOAR (Laird, Newall and Rosenbloom 1987). Another is 
+Jackson's concept demons (Jackson, John V. 1987, Franklin 1995). Agre's 
+dissertation is concerned with human routines (in press).<BR><BR>Brustiloni 
+(1991) gives other such design principles for agents that employ planning, as 
+many cognitive agents must.<BR><BR></P>
+<H3>High-level Architetures for Cognitive Agents</H3>
+<P><BR>Several high-level architectures for cognitive agents have been proposed 
+(Albus 1991, Baars 1988, Ferguson 1995, Hayes-Roth 1995, Jackson 1987, Johnson 
+and Scanlon 1987, Sloman 1995). Some of these include descriptions of mechanisms 
+for implementing the architectures, others do not. With the exception of 
+Sloman's, all of these are architectures for specific agents, or for a specific 
+class of agents. Surprisingly, the intersection of all these architectures is 
+rather small. It's like the story of the blind men and the elephant. What you 
+sense depends on your particular viewpoint. <BR><BR>Here we're concerned with 
+answering question Q2 above about the necessary elements of embodied 
+architectures. I'd also like to push further in search of a general architecture 
+for cognitive agents. This architecture should be constrained by the tenets of 
+the action selection paradigm of mind and, as much as possible, by the design 
+principles of the previous section. Ideas for this architecture may be drawn 
+from those referenced in the previous paragraph, and from VMattie's 
+architecture. Hopefully, this architecture will give rise to a theory that 
+serves to kickoff the CAAT strategy outlined above. We'll produce a plan for 
+this architecture by a sequence of refinements beginning with a very simple 
+model.<BR><BR>Computer scientists often partition a computing system into input, 
+processing and output for beginning students.</P>
+<P align=center><IMG height=80 
+src="Autonomous Agents as Embodied AI_files/AAEI.image1.gif" width=295 
+align=bottom NATURALSIZEFLAG="3"></P>
+<P>&nbsp;</P>
+<P align=center>Figure 1</P>
+<P>The corresponding diagram for an autonomous agent might look as follows.</P>
+<P align=center><IMG height=80 
+src="Autonomous Agents as Embodied AI_files/AAEI.image2.gif" width=295 
+align=bottom NATURALSIZEFLAG="3"></P>
+<P>&nbsp;</P>
+<P align=center>Figure 2</P>
+<P>The short answer A2 guides a refinement of Figure 2. While sensors and 
+actions are explicitly present, drives and action selection are not.</P>
+<P align=center><IMG height=142 
+src="Autonomous Agents as Embodied AI_files/AAEI.image3.gif" width=295 
+align=bottom NATURALSIZEFLAG="3"></P>
+<P>&nbsp;</P>
+<P align=center>Figure 3</P>
+<P>Though drives are explicitly represented in Figure 3, they may well appear 
+only implicitly in the causal mechanisms of a particular agent. The diagram in 
+Figure 3 is explicitly guided by AS1 (action selection) and AS2 (drives). AS3 
+talks about the creation of information (Oyama 1985), which is accomplished 
+partly by perception (Neisser 1993). Perception provides the agent with 
+affordances (Gibson 1979). Glenberg suggests that sets of these affordances 
+allow the formation of concepts and the laying down of memory traces (to 
+appear). Note that we've split perception off from action selection. In further 
+refinements of the architecture, action selection must be interpreted less and 
+less broadly. <BR></P>
+<P align=center><IMG height=141 
+src="Autonomous Agents as Embodied AI_files/AAEI.image4.gif" width=397 
+align=bottom NATURALSIZEFLAG="3"><BR><BR>Figure 4</P>
+<P>AS4 leads to another refinement with the addition of memory. We will include 
+both long-term memory and short-term memory (workspace). Though only one memory 
+and one workspace will be shown in Figure 5, multiple specialized memories and 
+workspaces may be expected in the architectures of complex autonomous agents. 
+VMattie's architecture contains two of each, one set serving perception.<BR></P>
+<P align=center><IMG height=141 
+src="Autonomous Agents as Embodied AI_files/AAEI.image5.gif" width=427 
+align=bottom NATURALSIZEFLAG="3"><BR><BR>Figure 5</P>
+<P>At this point the action selection paradigm of mind give us only general 
+guidance: employ multiple, independent modules (AS5) and allow for disparate 
+mechanisms (AS5). Thus we turn to design principles. The Attention Principle 
+points to an attention mechanism or relevance filter. Note that attention will 
+depend on context and, ultimately, on the strength and urgency of drives.</P>
+<P align=center><IMG height=187 
+src="Autonomous Agents as Embodied AI_files/AAEI.image6.gif" width=429 
+align=bottom NATURALSIZEFLAG="3"></P>
+<P>&nbsp;</P>
+<P align=center>Figure 6</P>
+<P>Though the Internal Models principle warns against over doing it, some 
+internal modeling of the environment will be needed to allow for expectations 
+(important to perception, for instance), planning, problem solving, etc. This 
+principle also points to the distinction between reactive and deliberative 
+action selection (see for example Sloman 1995). Deliberative actions are 
+selected with the help of internal models, planners, schedulers, etc. These 
+models use internal representations in the strict sense of the word, that is, 
+they are consulted for their content. Internal states that play a purely causal 
+role without such consultations are not representations in this sense (Franklin 
+1995 Chapter 14). Reactive actions are exemplified by reflexes and routines 
+(Agre, in press). They are arrived at without such consultation. Brustiloni's 
+instinctive and habitual behaviors would be reactive while his problem solving 
+and higher behaviors would be deliberative (1991). Deliberative mechanisms such 
+as planners and problem solvers may well require their own memories and 
+workspaces not shown in the figure.</P>
+<P align=center><IMG height=198 
+src="Autonomous Agents as Embodied AI_files/AAEI.image7.gif" width=429 
+align=bottom NATURALSIZEFLAG="3"><BR><BR>Figure 7</P>
+<P>The Coordination Principle warns us against unnecessary communication. Still, 
+for a cognitive agent in a society of other such, communication may well be 
+needed. It is sufficiently important that some people include it in their 
+definition of an agent (Wooldridge and Jennings 1995). VMattie communicates with 
+humans by email. Her understanding of incoming messages is part of perception. 
+Her composition of outgoing messages are brought about by deliberative 
+behaviors. Independent modules for understanding messages and for composing 
+messages must be part of a general cognitive agent architecture.<BR></P>
+<P align=center><IMG height=282 
+src="Autonomous Agents as Embodied AI_files/AAEI.image8.gif" width=426 
+align=bottom NATURALSIZEFLAG="3"><BR><BR>Figure 8</P>
+<P>The Knowledge Principle brings up two issues: building knowledge into the 
+reactive behaviors, and learning. By definition, knowledge is built into 
+reactive behaviors casually through their mechanisms, rather than declaratively 
+by means of representations. This doesn't show up in the diagrams. <BR><BR>The 
+other issue brought up by the Knowledge Principle is learning, which is critical 
+to many autonomous agents coping with complex, dynamic environments, and must be 
+included in a general cognitive agent architecture. Learning, itself, is quite 
+complex. Thomas (1993) lists eight different types of learning as follows: 1) 
+habituation-sensitization, 2) signal learning, 3) stimulus-response learning, 4) 
+chaining, 5) concurrent discriminations, 6) class concepts: absolute and 
+relative, 7) relational concepts I: conjunctive, disjunctive, conditional 
+concepts, 8) relational concepts II: biconditional concepts. He uses this 
+classification as a scale to measure the abilities of animals to learn. Perhaps 
+the same or a similar scale could be used for autonomous agents. <BR><BR>Thomas' 
+classification categorizes learning according to the sophistication of the 
+behavior to be learned. One might also classify learning according to the method 
+used. Maes lists four such methods: memory based reasoning, reinforcement 
+learning, supervised learning, and learning by advice from other agents (1994). 
+Drescher's concept learning (1988) and Kohonen's self-organization (1984) are 
+other methods. The Curiosity Principle is directly concerned with reinforcement 
+learning, while the Routines Principle speaks of compiling or chunking sequences 
+of actions, again a form of learning.</P>
+<P align=center><IMG height=321 
+src="Autonomous Agents as Embodied AI_files/AAEI.image9.gif" width=442 
+align=bottom NATURALSIZEFLAG="3"><BR><BR>Figure 9</P>
+<P><BR>The limitations of working with an almost planer graph become apparent in 
+Figure 9. Learning mechanisms should also connect to drives and to memory, 
+essentially to everything. And, there are other connections that need to be 
+included, or to run in both directions.<BR><BR>Well, we've run out of our 
+sources of guidance, both action selection paradigm tenets and design 
+principles. Are we then finished? By no means. Our general architecture for a 
+cognitive agent is still in its infancy. Much is missing. <BR><BR>Our agent's 
+motivations are restricted to drives and the goal trees that are grown from 
+them. We haven't even mentioned the goal-generators that grow them. We also 
+haven't discussed other motivational elements, such as moods, attitudes, and 
+emotions which can influence action selection. For such a discussion, see the 
+work of Sloman (1979, 1994, Sloman and Croucher 1981). Perception can have a 
+quite complex architecture of its own (Marr 1982, Sloman 1989, Kosslyn and 
+Koeing 1992), including workspaces and memories. Each sensory modality will 
+require its own unique mechanisms, as will the need to fuse information from 
+several modalities. Each of the deliberative mechanisms will have its own 
+architecture, often including workspaces and memories. Each will have its own 
+connections to other modules. For instance, some set of them may connect in 
+parallel to perception and action selection (Ferguson 1995). Similarly, each of 
+the various learning mechanisms will have its own architecture, connecting in 
+unique ways to other modules. The relationship between sensing and acting, where 
+acting facilitates sensing, isn't yet specified in the architecture. And, the 
+internal architecture of the action selection module itself hasn't be discussed. 
+Finally, there's a whole other layer of the architecture missing, what Minsky 
+calls the B-brain (Minsky 1985), and Sloman calls the meta-management layer 
+(Sloman 1995). This layer watches what's going on in other parts of our 
+cognitive agent's mind, keeps it from oscillating, improves it strategies, etc. 
+And after all this, are we through? No. There's Baars' notion of a global 
+workspace that broadcasts information widely in the system, and allows for the 
+possibility of consciousness (1988). There seems to be no end.<BR><BR>As you can 
+see, the architecture of cognitive agents is the subject, not for an article, 
+but for a monograph, or a ten-volume set. Question Q2 about the necessary 
+elements of embodied architectures is not an easy one if, as I do, you take 
+cognitive agents to be the proper objects of study for embodied AI.</P>
+<H3>A Paradigm for Embodied AI</H3>
+<P><BR>So, how should embodied AI research proceed? Here's a "concrete 
+proposal." <BR><BR>· Study cognitive agents. The contention here is that a 
+holistic view is necessary. Intelligence cannot be understood piecemeal. That's 
+not to say that projects picking off a piece of intelligence and studying its 
+mechanisms aren't valuable. They often are. The claim is that they are not 
+sufficient, even in the aggregate.<BR><BR>· Follow the CAAT strategy. Running 
+the engineering loop and the science loop in parallel will enable the synergy 
+between. This will mean making common cause with cognitive scientists and 
+cognitive neuroscientists.<BR><BR>· Explore design space and niche space (Sloman 
+1995). Strive to understand not only individual agent architectures, but the 
+space of all such architectures. This means exploring, classifying, and 
+theorizing at a higher level of abstraction. Each agent occupies a particular 
+niche in its environment. Explore, in the same way, the space of such niches and 
+the architectures that are suitable to them.<BR><BR></P>
+<H3>References</H3>
+<P><BR>Ackley, David, and Littman, Michael, (1992). "Interactions Between 
+Learning and Evolution." In Christopher Langton et al., ed., Artificial Life II. 
+Redwood City, Calif.: Addison-Wesley 407-509.<BR><BR>Agre, Philip E. (in press). 
+The Dynamic Structure of Everyday Life. Cambridge: Cambridge University 
+Press.<BR><BR>Albus, J.S. (1991). "Outline for a Theory of Intelligence," IEEE 
+Transactions on Systems, Man and Cybernetics, Vol. 21, No. 3, 
+May/June.<BR><BR>Albus, J.S. (1996). "The Engineering of Mind," Proceedings of 
+the Fourth International Conference on Simulation of Adaptive Behavior: From 
+Animals to Animats 4, Cape Code, MA, September.<BR><BR>Baars, B. J. (1988). A 
+Cognitive Theory of Consciousness. Cambridge: Cambridge University 
+Press.<BR><BR>Beer, R. D. (1990). Intelligence as Adaptive Behavior. Boston: 
+Houghton Mifflin.<BR><BR>Brooks, R. A. (1990). "Elephants Don't Play Chess." in 
+Pattie Maes, ed., Designing Autonomous Agents. Cambridge, MA: MIT 
+Press.<BR><BR>Brooks, R. A. (1990a). "A Robust Layered Control System for a 
+Mobile Robot." in P. H. Winston, ed., Artificial Intelligence at MIT, vol. 2. 
+Cambridge, MA: MIT Press.<BR><BR>Brustoloni, Jose C. (1991). "Autonomous Agents: 
+Characterization and Requirements." Carnegie Mellon Technical Report 
+CUM-CS-91-204. Pittsburgh: Carnegie Mellon University.<BR><BR>Drescher, G. L. 
+(1988). "Learning from Experience Without Prior Knowledge in a Complicated 
+World." Proceedings of the AAAI Symposium on Parallel Models. AAAI 
+Press.<BR><BR>Kosslyn and Koeing 1992) Made-up Minds. MIT Press.<BR><BR>Edelman, 
+G. M. (1987). Neural Darwinism: The Theory of Neuronal Group Selection. New 
+York: Basic Books. <BR><BR>Etzioni, Oren and Weld, Daniel (1994). "A 
+Softbot-Based Interface to the Internet." Communications of the ACM, (37) 7: 
+72-79.<BR><BR>Ferguson, I. A. (1995). "On the role of DBI modeling for 
+integrated control and coordinated behavior in autonomous agents." Applied 
+Artificial Intelligence, 9(4).<BR><BR>Foner, L. N., and Maes, Pattie. (1994). 
+"Paying Attention to What's Important: Using Focus of Attention to Improve 
+Unsupervised Learning." Proceedings of the Third International Conference on the 
+Simulation of Adaptive Behavior, Brighton, England.<BR><BR>Franklin, Stan 
+(1995). Artificial Minds. Cambridge, MA: MIT Press.<BR><BR>Franklin, Stan 
+(forthcoming). "Coordination Without Communication."<BR><BR>Franklin, Stan and 
+Graesser, Art (1997) "Is it an Agent, or just a Program?: A Taxonomy for 
+Autonomous Agents," Proceedings of the Agent Theories, Architectures, and 
+Languages Workshop, Berlin: Springer Verlag, 193-206.<BR><BR>Franklin, Stan, 
+Graesser, Art, Olde, B., Song, H., and Negatu, A. (forthcoming)<BR>"Virtual 
+Mattie-an Intelligent Clerical Agent."<BR><BR>Freeman, W. J., and Skarda, C. 
+(1990). "Representations: Who Needs Them?" In J. L. McGaugh, et al., eds., Brain 
+Organization and Memory Cells, Systems, and Circuits. New York: Oxford 
+University Press.<BR><BR>Gibson, J. J., (1979). The Ecological Approach to 
+Visual Perception. Boston: Houghton Mifflin.<BR><BR>Glenberg, A. M. (to appear). 
+"What Memory Is For." Behavioral and Brain Sciences.<BR><BR>Hayes-Roth, B. 
+(1995). "An architecture for adaptive intelligent systems." Artificial 
+Intelligence, 72 329-365.<BR><BR>Hofstadter, D. R. and Mitchell, M. (1994). "The 
+Copycat Project: A model of mental fluidity and analogy-making." In Holyoak, 
+K.J. &amp; Barnden, J.A. (Eds.) Advances in connectionist and neural computation 
+theory. Vol. 2: Analogical Connections. Norwood, N.J.: Ablex.<BR><BR>Horgan, T. 
+and Tiensen, J. (1989). "Representation without Rules." Philosophical Topics, 17 
+(Spring): 147-74.<BR><BR>Horgan, T. and Tiensen, J. (1996). Connectionism and 
+the Philosophy of Psychology. Cambridge, MA: MIT Press.<BR><BR>Jackson, John V. 
+(1987). "Idea For A Mind." SIGART Newsletter, July<BR>No. 101 
+23-26<BR><BR>Johnson, M. and Scanlon, R. (1987) "Experience with a 
+Feeling-Thinking Machine", Proceedings of the IEEE First International 
+Conference on Neural Networks, San Diego. 71-77.<BR><BR>Kanerva, P. (1988). 
+Sparse Distributed Memory. MIT Press.<BR><BR>Kohonen, T. (1984). 
+Self-Organization and Associative Memory. Berlin: Springer 
+Verlag.<BR><BR>Kosslyn, S. M. and Koeing, O. (1992). Wet Minds. New York: The 
+Free Press.<BR><BR>Laird, John E., Newall, Allen, and Rosenbloom, Paul S. 
+(1987). "SOAR: An Architecture for General Intelligence." Artificial 
+Intelligence, 33: 1-64.<BR><BR>Luck, M. and D'Inverno, M. (1995). "A Formal 
+Framework for Agency and Autonomy." Proceedings of the International Conference 
+on Multiagent Systems. 254-260.<BR><BR>Maes, Pattie (1990). "How to do the right 
+thing." Connection Science. (1):3.<BR><BR>Maes, Pattie (1994). "Agents that 
+Reduce Work and Information Overload." Communications of the ACM, Vol. 37, No. 
+7. 31-40, 146, ACM Press, July. <BR><BR>Marr, David (1982). Vision. San 
+Francisco: W. H. Freeman.<BR><BR>Maturana, H. R. (1975). "The Organization of 
+the Living: A Theory of the living Organization." International Journal of 
+Man-Machine Studies, 7:313-32.<BR><BR>Maturana, H. R. and Varela, F. (1980). 
+Autopoiesis and Cognition: The Realization of the Living. Dordrecht, 
+Netherlands: Reidel.<BR><BR>Mauldin, M. L. (1994). "Chatterbots, Tinymuds, And 
+The Turing Test: Entering The Loebner Prize Competition." Proceedings of 
+AAAI.<BR><BR>Minsky, Marvin (1985). Society of Mind. New York: Simon and 
+Schuster.<BR><BR>Mitchell, Melanie (1993). Analogy-Making as Perception, 
+Cambridge MA: The MIT Press.<BR><BR>Neisser, Ulric (1993). "Without Perception, 
+There Is No Knowledge: Implications for Artificial Intelligence." in R. G. 
+Burton, ed., Natural and Artificial Minds, State University of New York 
+Press.<BR><BR>Oyama, Susan (1985). The Ontology of Information. Cambridge: 
+Cambridge University Press.<BR><BR>Reeke, G. N., Jr., and Edelman, G. M. (1988). 
+"Real Brains and Artificial Intelligence." Daedalus, Winter, 143-73. Reprinted 
+in S. R. Graubard, ed., The Artificial Intelligence Debate, Cambridge, MA: MIT 
+Press.<BR><BR>Riegler, Alexander (1994), "Constructivist Artificial Life," In: 
+Hopf, J. (ed.) Proceedings of the 18th German Conference on Artificial 
+Intelligence (KI-94) Workshop "Genetic Algorithms within the Framework of 
+Evolutionary Computation" Max-Planck-Institute Report No. MPI-I-94-241. 
+<BR><BR>Searle, J. (1980). "Minds, Brains, and Programs." Behavioral and Brain 
+Sciences 3:417-58.<BR><BR>Skarda, C. and Freeman, W. J. (1987). "How Brains Make 
+Chaos in Order to Make Sense of the World." Behavioral and Brain Sciences 10, 
+2:161-95. <BR><BR>Sloman, Aaron (1979). "Motivational and Emotional Controls of 
+Cognition." reprinted in Model of Thoughts, Yale University Press. 
+29-38.<BR><BR>Sloman, Aaron (1989). "On Designing a Visual System: Towards a 
+Gibsonian computational Model of Vision." Journal of Experimental and 
+Theoretical AI. 1,7 289-337.<BR><BR>Sloman, Aaron (1994). "Computational 
+modeling of motive-management processes." Proceedings of the Conference of the 
+International Society for Research in Emotions. Cambridge, N. Frijda, ed. ISRE 
+Publications, 344-8.<BR><BR>Sloman, Aaron (1995). "Exploring Design Space and 
+Niche Space." Proceedings 5th Scandinavian Conf on AI, Trondheim May 1995, 
+Amsterdam: IOS Press.<BR><BR>Sloman, Aaron and Croucher, M. (1981). "Why Robots 
+will have Emotions." Proc. 7th Int. Joint Conf. on AI. Vancouver.<BR><BR>Sloman, 
+Aaron and Poli, Riccardo (1995). "SIM_AGENT: A Toolkit for Exploring Agent 
+Designs." in M. Woolridge, et al eds., Intelligent Agents, Vol. II (ATAL-95). 
+Springer-Verlag 392-407.<BR><BR>Song, H., Franklin, Stan and Negatu, A. (1996), 
+"SUMPY: A Fuzzy Software Agent." in ed. F. C. Harris, Jr., Intelligent Systems: 
+Proceedings of the ISCA 5th International Conference (Reno Nevada, June 1996) 
+International Society for Computers and Their Applications - ISCA, 
+124-129.<BR><BR>Thomas, Roger K. (1993). "Squirrel Monkeys, Concepts and Logic." 
+in R. G. Burton, ed., Natural and Artificial Minds, State University of New York 
+Press.<BR><BR>Varela, F.J., Thompson, E. and Rosch, E. (1991). The Embodied 
+Mind. Cambridge, MA: MIT Press.<BR><BR>Wooldridge, Michael and Nicholas R. 
+Jennings (1995), "Agent Theories, Architectures, and Languages: a Survey," in 
+Wooldridge<BR>and Jennings Eds., Intelligent Agents, Berlin: Springer-Verlag, 
+1-22<BR><BR>Yager, R. R. and Filev, D. P. (1994). Essentials of Fuzzy Modeling 
+and Control. New York: John Wiley &amp; Sons. </P></BODY></HTML>

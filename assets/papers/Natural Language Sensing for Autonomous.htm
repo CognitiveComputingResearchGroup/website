@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0079)http://www.msci.memphis.edu/~cmattie/NaturalLanguageSensingforAutonomousAgents/ -->
+<!-- saved from url=(0048)http://www.msci.memphis.edu/~zhangz/NatLang.html --><HTML><HEAD><TITLE>Natural Language Sensing for Autonomous Agents</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2713.1100" name=GENERATOR></HEAD>
+<BODY><B><FONT size=4>
+<P align=center>Natural Language Sensing for Autonomous Agents</P></B>
+<P></P>
+<P align=center>Zhaohua Zhang, Stan Franklin, Brent Olde, Art Graesser and Yun 
+Wan</P>
+<P></P>
+<P>&nbsp;</P>
+<P align=center>Institute for Intelligent Systems</P>
+<P align=center>The University of Memphis</P>
+<P>&nbsp;</P><B>
+<P align=center>Abstract</P></B>
+<P>&nbsp;</P>
+<DIR>
+<DIR>
+<P>In sufficiently narrow domains, natural language understanding may be 
+achieved via an analysis of surface features without the use of a traditional 
+symbolic parser. Here we illustrate this notion by describing the natural 
+language sensing in Virtual Mattie (VMattie), an autonomous clerical agent. 
+VMattie "lives" in a UNIX system, communicates with humans via email in natural 
+language with no agreed upon protocol, and autonomously carries out her tasks 
+without human intervention. In particular, she keeps a mailing list to which she 
+emails seminar anouncements once a week. VMattie's various tasks include 
+gathering information from seminar organizers, reminding organizers to send 
+seminar information, updating her mailing list in response to human requests, 
+composing next week’s seminar schedule announcement, and sending out the 
+announcement to all the people on her mailing list in a timely fashion. 
+VMattie’s limited domain requires her to deal with only nine distinct message 
+types, each with preditable content. This allows for surface level natural 
+language processing. VMattie's language understanding module has been 
+implemented as a Copycat-like architecture though her understanding takes place 
+differently. The mechanism includes a slipnet storing domain knowledge and a 
+pool of codelets (processors) specialized for specific jobs, along with 
+templates for building and verifying understanding. Together they constitute an 
+integrated sensing system for the autonomous agent VMattie. With it she's able 
+to recognize, categorizize and understand. Here we describe in detail the design 
+and implementation of natural language sensing for autonomous agents such as 
+VMattie who communicate (sense) via email. Assessment of Vmattie’s performance 
+on one hundred email messages was very encouraging. Vmattie assigned 100% of the 
+messages into the correct categories and correctly sensed 99% of the content 
+slots.</P>
+<P>&nbsp;</P></DIR></DIR><B>
+<P>Introduction</P></B>
+<P>Virtual Mattie (VMattie) is an autonomous clerical agent (Franklin, Graesser, 
+Olde, Song, and Negatu 1996) that "lives" in a UNIX system, communicates with 
+humans via email in natural language with no agreed upon protocol, and 
+autonomously carries out tasks within her domain. VMattie deals with a dynamic, 
+but limited, real world environment. She is an autonomous agent in that she 
+senses her environment and acts on it, over time, in such a way as to effect 
+future sensing (Franklin and Graesser 1997). VMattie runs continuously (not just 
+one time), and performs her tasks without human intervention. She can sense and 
+change her environment. What she senses, along with her internal drives and 
+states determine her next action. Her action selection mechanism is a 
+considerably extended form of the Maes behavior net (1990).</P>
+<P>VMattie carries out tasks originally performed by Mattie – a human secretary 
+in an academic department office. Our intent was to develop an autonomous 
+clerical agent who could take over some limited chore from the real Mattie. The 
+chore chosen was emailing an announcement each week detailing the dozen or so 
+weekly seminars to be held in the department during the following week. (These 
+are ongoing seminars typically lasting many weeks.) This chore requires VMattie 
+to gather information on speakers and topics from seminar organizers, to dun 
+them when this was not forthcoming, to understand incoming email messages in 
+natural language with no agreed upon protocol, to acknowledge each message, to 
+compose next week’s seminar schedule announcement, to keep her mailing list 
+updated in response to email requests, and to send out the announcement in a 
+timely fashion.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>This paper is concerned with VMattie’s natural language sensing. She senses 
+her environment only via incoming email messages. Natural language understanding 
+using only surface features is possible for VMattie because of her limited 
+domain. She need identify only nine different message types, each of which is 
+expected to contain only a handful of data. Thus, rather than using a classic 
+symbolic parser, VMattie's natural language processing is implemented as a 
+Copycat-like architecture (Hofstadter and Mitchell, 1993), with major 
+differences. While Copycat recognizes and categorizes, it's mainly about making 
+analogies. VMattie must recognize, categorizze and extract relevant data from an 
+incoming email with no agreed on protocal. Understanding incoming data is much 
+more complicated for VMattie than for Copycat, though the use to which it is put 
+is simpler. </P>
+<P>VMattie's natural language understanding occurs in two stages. First, the 
+incoming message is classified as one of the nine message types. Then the 
+relevant data from the message is extracted based on the type of the message. 
+Data items may include speaker name, affiliation of the speaker, title of the 
+talk, time of the seminar, date, place, email address of sender, etc. All this 
+information will be used for other tasks such as acknowledging the message, 
+composing next week’s seminar schedule announcement, and/or updating her mailing 
+list.</P>
+<P>The architecture of VMattie is diagramed in figure 1.</P>
+<P>&nbsp;</P>
+<P><IMG height=226 
+src="Natural Language Sensing for Autonomous_files/Image1.gif" width=539></P>
+<P>Figure 1: Architecture of Virtual Mattie</P>
+<P>The perception module of Vmattie is shown within the dotted lines in figure 
+1. The i/o module is in two pieces in the upper left. The rest of the system 
+constitutes the action selection module.</P>
+<P>Section 2 introduces the components of the perception module. Section 3, 
+discusses message types. Section 4 and 5 describe the slipnet and the codelets 
+respectively. Section 6 describes in detail the workings of the perception 
+module and how an incoming message is understood. Section 7 presents the results 
+of our testing of VMattie’s perception. And finally, Sections 8 and 9 are 
+concerned with further work and a conclusion. </P>
+<P>&nbsp;</P><B>
+<P>2</B> <B>Perception </P></B>
+<P>VMattie’s perception module constitutes a mechanism for natural language 
+processing in her limited domain. It consists of a knowledge base, a workspace, 
+and their associated codelets.</P>
+<P>The term "codelet" was coined by Hofstadter and Mitchell (1994) to refer to a 
+small piece of code capable of performing some small task. Each codelet can be 
+viewed as an independent processor specialized for a specific job. Together they 
+produce VMattie’s low-level behavior. A codelet can also be thought of as an 
+agent with a little built-in knowledge. </P>
+<P>All perceptual codelets are initially inactive and situated in the population 
+of codelets (see Figure 2). When perception is triggered, codelets associated 
+with that perception become potentially active, and jump into the pool. There 
+they wait to be chosen to run, either by being called by currently running 
+codelets or by active nodes in the slipnet. Most codelets are associated with 
+nodes in the slipnet. Codelets will be described in more detail later.</P>
+<P><IMG height=236 
+src="Natural Language Sensing for Autonomous_files/Image2.gif" width=424></P>
+<P>Figure 2: Population of Codelets, Codelets in Pool, Running Codelets </P>
+<P>&nbsp;</P>
+<P>The slipnet and nine templates constitute VMattie’s perceptual knowledge 
+base. The slipnet contains domain knowledge (surface features) needed to 
+understand incoming email messages. Think of it as a semantic net capable of 
+passing activation. Its nodes represent concepts, its links relations, and its 
+weights the strength of the relations between concepts. This knowledge plays an 
+important role in categorizing message types. The slipnet will be discussed in 
+more detail in Section 4 where an example will be given. Codelets build their 
+perceptual constructs using templates. Each message type corresponds to one 
+template. Different message types will have different slots in their templates. 
+</P>
+<P>Figure 3 shows the template for a Speaker-Topic message. During the 
+perception (understanding) process, a candidate message type is chosen and a 
+copy of its template moved to the perceptual workspace where codelets will work 
+on filling its slots. If the message type proves to be incorrect, another is 
+selected and the process begins anew. The old template is destroyed and codelets 
+work on the new one. A selected message type is considered correct if its 
+template can be adequately filled. </P>
+<P><IMG height=275 
+src="Natural Language Sensing for Autonomous_files/Image3.gif" width=267></P>
+<P>Figure 3: Speaker-Topic Message Template (italic shows mandatory slots) </P>
+<P align=center>&nbsp;</P>
+<P>The perceptual workspace holds relatively dynamic data. At a particular time 
+it could contain an incoming message and the currently selected partially filled 
+template. </P>
+<P>&nbsp;</P><B>
+<P>3 Analysis of Incoming Messages</P></B>
+<P>After carefully studying a two-year a corpus of messages between the real 
+Mattie and seminar organizers and announcement recipients, we found the message 
+space partitioned into nine distinct types as shown below:</P>
+<DIR>
+<P>Seminar initial message – tells of a new seminar being organized</P>
+<P>Speaker topic message – gives the speaker and title for one session</P>
+<P>No seminar message – cancels next week’s session</P>
+<DIR>
+<P>Seminar conclusion message – cancels seminar for the rest of the 
+semester</P></DIR>
+<P>Change of time message – gives a new time for the next session</P>
+<P>Change of place message – gives a new place for the next session </P>
+<P>Change of topic message – message about changing the title of a talk</P>
+<P>Add to mailing list message – asking to be added to the mailing list</P>
+<P>Remove from mailing list message – asking to be removed </P></DIR>
+<P>Some messages in the corpus contain data of more than one type. For example, 
+the initiation of a new seminar may be combined with the name of the first 
+speaker and his or her title. We’ve designed VMattie to deal only with messages 
+of a single type. Her successor, Conscious Mattie, will be able to understand 
+multi-type messages. To deal with nonsense messages or messages out of VMattie’s 
+domain, we added an "irrelevant" message type.</P>
+<P>Our analysis of an actual corpus of messages to Mattie (a human secretary) 
+helped us to surface features of the messages, words, phrases, and characters 
+that provide knowledge important for classification and understanding of 
+messages. Understanding, in this context, consists of getting the right message 
+parts in the right template slots. All these words, phrases and characters have 
+been stored in the slipnet as nodes. For example, the phrase "speak on" is an 
+indicator that the following phrase is likely to be the title of a talk.</P><B>
+<P>&nbsp;</P>
+<P>4 Slipnet</P></B>
+<P>Slipnet’s knowledge is arranged in a three-layer network whose nodes 
+represent concepts, whose links represent their relations, and whose weights 
+measure the strength of the relations. Each link serves to limit the possible 
+meanings and/or uses of its source. For example, the link from "speak on" to 
+"topic of seminar" limits the possible use of "speak on."</P>
+<P>First-layer nodes store specific keywords, phrases, special characters, and 
+so on. Nodes in the second-layer store more abstract concepts such as 
+day-of-week or place-of-seminar. The nine message types are found in the 
+third-layer nodes. The "irrelevant" message type is not a node in the slipnet 
+since no information needed be extracted in that case. </P>
+<P>Activation spreads between connected nodes. Each node’s activation level is 
+influenced by the activation levels of neighbor nodes, by the weights on their 
+links, and by the activity of codelets. </P>
+<P>Slipnet’s primary function is to aid in the recognition of incoming data and 
+in the classification of message types. When activation spreads forward (from 
+layer 1 to layer 3), slipnet acts as a feed-forward neural network, complete 
+with thresholds at the nodes, classifying the message type. The forward weights 
+were obtained by training slipnet over two hundred incoming messages and tuning 
+by hand. So slipnet has characteristics of connectionism. But it is not a pure 
+neural network in that it stores semantic meanings, and in that not all nodes 
+perform weighted sums. Activation spreading backward from the selected message 
+type node (from layer 3 to layer 1), activates appropriate nodes that set in 
+motion codelets looking for data to fill the slots in the appropriate template. 
+The backward weights are predefined. Figure 4, a small piece of the slipnet 
+diagram, provides a taste of what the slipnet looks like.<B> </P></B>
+<P><IMG height=241 
+src="Natural Language Sensing for Autonomous_files/Image4.gif" width=522></P><B>
+<P></B>Figure 4: Partial Slipnet Diagram</P><B>
+<P>&nbsp;</P>
+<P>5 Codelets</P></B>
+<P>At a high level of abstraction, Virtual Mattie’s architecture consists of a 
+slipnet, a behavior net, working memories, etc. At a lower level, VMattie’s 
+actions are all taken by codelets. Some primitive codelets are always active and 
+running. They independently perform housekeeping functions such as watching the 
+current time and the mailbox for incoming messages.</P>
+<P>Most codelets, however, directly subserve some behavior or slipnet node. 
+These are usually not active and are originally situated in the population of 
+codelets. This paper focuses on those codelets of this second kind that are 
+associated with perception. These will include codelets that search, that 
+extract, that fill template slots or perception register slots, and 
+others.</P><B>
+<P></B>Searching codelets accomplish recognition. Each such specializes in 
+searching for some particular keyword, or a special character or a phrase. It is 
+capable of recognizing the standard form of its target, and also various 
+alternate forms. For example, a codelet that searches for Tuesday will also 
+recognize <I>tuesday, Tu., Tu, tu, Tues</I>, etc.</P>
+<P>Other codelets are specialized for extracting specific data from an incoming 
+message, for example, a speaker’s name or an email address. Such codelets also 
+involve recognition, but of a somewhat different form. Each needs to do a little 
+parsing job to decide which word or phrase in the message is its target. The 
+extracting codelets associated with nodes in the first-layer of slipnet will 
+extract a little piece of text directly from incoming message. The extracting 
+codelets associated with nodes in the second-layer of slipnet will extract 
+information based on those little pieces.<B> </B>It may well have to choose from 
+several candidates presented by extracting first-layer codelets. For example, 
+extracting codelets parsing via the keywords "speak on" and "topic" may offer 
+different possible titles. Consider the message "C. Rouseau will speak to the 
+Graph Theory Seminar on the topic of Probabilistic Ramsey Numbers." The 
+extracting codelet parsing with "speak on" might settle for "speak to" and offer 
+"Graph Theory Seminar" as a title, while the extracting codelet parsing with 
+"topic" chooses "Probabilistic Ramsey Numbers."</P>
+<P>Still other codelets fill the slots in a template in the perceptual 
+workspace. The template is the one associated with the selected message type. 
+These codelets contribute directly to VMattie’s understanding of the message. 
+Other codelets transfer this information into perception registers for further 
+use in various parts of the system.</P>
+<P>Other codelets select a message type based on the activation levels of the 
+nodes in the third layer of slipnet and the current temperature. Still others 
+select the appropriate template and move a copy into the perceptual workspace. 
+Codelets are the workhorses of the VM architecture. They are responsible for all 
+the low-level tasks.</P>
+<P>&nbsp;</P>
+<P><B>6 How Understanding Happens</P></B>
+<P>Consider the following message: "Prof. C. Rousseau will speak to the Graph 
+Theory Seminar next week on A Probabilistic Approach to Finding Ramsey Numbers." 
+A regular attendee of that seminar, knowing about probability theory and Ramsey 
+numbers, should understand this message at a pretty high level. Rousseau's young 
+daughter would likely understand only that Daddy was going to give a talk 
+somewhere. A secretary who typed the message might understand that a talk on 
+some unfamiliar mathematical topic was to be given to a group of people some of 
+whom he or she knew. These represent three different levels of understanding. 
+VMattie would also understand this message at her level. She'd know, for 
+example, the name of the speaker and of the seminar, the title of the talk, and 
+from "next week" deduce the date of the talk along with the place and time. Her 
+understanding such a message from a seminar organizer is sufficient for her task 
+of composing and sending out seminar announcements.</P>
+<P>&nbsp;</P><B>
+<P>6.1 Message into Workspace</B> </P>
+<P>When primitive codelets sense there is a new message in the mailbox and know 
+that the perceptual workspace is empty, they move the message into the 
+workspace. The codelets associated with perception jump into the pool where they 
+wait to be chosen to run. Codelets in the pool run when called either by 
+currently running codelets or by active slipnet nodes. The primitive codelets 
+that move a new message into the workspace call all the searching codelets into 
+the pool. Each searching codelet then begins to search the target.</P><B>
+<P>&nbsp;</P>
+<P>6.2 Recognition</P></B>
+<P>Each searching codelet is associated with a first-layer node in the slipnet. 
+If a codelet finds the keyword or phrase it is looking for, it will activate its 
+associated slipnet node. This constitutes initial recognition. The active nodes 
+spread activation in the slipnet. </P><B>
+<P>&nbsp;</P>
+<P>6.3 Message Type Classification</B> </P>
+<P>As activation spreads forward (from layer 1 to layer 3) in the slipnet, it 
+acts like a feed-forward neural network, and classifies the message type. The 
+third layer nodes, corresponding to the nine message types, will have different 
+activation levels. The one with the highest activation level is selected as the 
+proposed message type, a winner takes all strategy. But all the other message 
+type nodes retain their activation, and are candidates for the next selection if 
+the current winner is proven to be wrong. If the activation of all the message 
+type nodes are very low and cannot reach a given threshold, the message is 
+classified as an irrelevant message and the understanding process is 
+finished.</P><B>
+<P>&nbsp;</P>
+<P>6.4 Template Filling</P></B>
+<P>The winning node then activates a codelet that knows the message type and 
+that selects the appropriate template to be loaded into the workspace. The 
+winner node that represents the selected message type simultaneously spreads 
+activation backward (from layer 3 to layer 1) to the nodes connected with it. 
+These active nodes call their associated extracting codelets into the pool so 
+those items such as the name of a speaker or the title of a seminar are 
+extracted.</P>
+<P>Codelets then begin to fill the slots in the template. Different message 
+types will have different slots in their templates. Some are mandatory slots 
+that must be filled, while others are optional. For example, the speaker’s name 
+and the title of his or her talk are mandatory slots in the template of the 
+speaker-topic message type.</P>
+<P></P><B>
+<P>6.5 Temperature Control</P></B>
+<P>As in the Hofstadter-Mitchel work, temperature is used to control the 
+understanding process by inversely estimating the degree of understanding. The 
+temperature starts high and falls as each slot, particularly a mandatory slot, 
+is filled. If some mandatory slots are not filled after some period of time, the 
+temperature remains high and a decision is taken by an active codelet that the 
+chosen message type is not correct. In this case, the second most active node in 
+the third layer of the slipnet is chosen as representing the new selected 
+message type. Its corresponding template is moved to the workspace and the 
+process starts anew. The newwinner node will spread activation backward over 
+slipnet. Eventually all the mandatory slots are filled in the template for some 
+message type. In this case, the temperature drops low and the understanding is 
+taken to be correct. If all message types are tried out and none of their 
+mandatory slots in corresponding templates can be completely filled, the 
+understanding ends up with an irrelevant message.</P><B>
+<P>&nbsp;</P>
+<P>6.6 Filling Perception Registers</P></B>
+<P>Finally, the information understood from the template is moved into 
+perception registers for further use in other tasks. This job will be done by 
+register-filling codelets.</P>
+<P>There are twelve perception registers: type of message, name of seminar, 
+title of seminar, name of speaker, affiliation of speaker, time of seminar, 
+place of seminar, day of week, date of seminar, name of organizer, email address 
+of sender, name of new organizer. Each register-filling codelet is designated to 
+fill one register.</P>
+<P>After this, the perception module has finished understanding one message and 
+is ready for another incoming email.</P><B>
+<P>&nbsp;</P>
+<P>6.7 Handling Misunderstandings</P></B>
+<P>If VMattie’s understanding is wrong due to ambiguity or other problems, she 
+will often have a chance to correct her errors in the future. Every message is 
+acknowledged based on her understanding. If something is wrong, hopefully the 
+seminar organizer will send another message restating their meaning more 
+clearly. VMattie will then have another chance to understand this less ambiguous 
+message.</P>
+<P>&nbsp;</P><B>
+<P align=center>7 Testing and performance</P></B>
+<P>We performed some tests of VMattie on a corpus of 100 email messages. Thirty 
+of the email messages in this corpus were selected from the messages that were 
+originally sent to Mattie (the human secretary). Ten email messages were 
+generated by coauthors on this paper who were attempting to stump VMattie by 
+sending a message that she would have trouble with. Six colleagues who were not 
+coauthors on this project sent sixty of the email messages. Each of these six 
+colleagues were asked to send one message of each of the 10 types of messages 
+(including the irrelevant message type). </P>
+<P>The first test of performance measured the probability that VMattie 
+classified the email messages into the correct message types. When considering 
+the 100 email messages in the test corpus, the messages had the following 
+frequency distribution: Seminar Initial Message (11), Speaker Topic Message 
+(23), Change of Time Message (7), Change of Place Message (6), Change of Topic 
+Message (7), No Seminar Message (8), Seminar Conclusion Message (12), Add to 
+Mailing List Message (10), Remove from Mailing List (9), and Irrelevant Message 
+(7). VMattie was 100% accurate in classifying the 100 email messages in the 
+corpus. </P>
+<P>The second test of performance measured the probability that VMattie filled 
+the 11 slots with the correct content. The results of this analysis are shown in 
+Table 1. Given that there were 100 messages and 11 slots per message, there were 
+1100 observations in this analysis. There were only 10 errors when considering 
+all 11 slots. That is, 99.1% of observations had the correct values filled for 
+the slots. The slots should have been filled with content in 396 (or 36%) of the 
+observations; the percentage of correctly filled slots was 98% for these 
+observations. The slots should have been blank for the other 704 observations; 
+the percentage correct was nearly perfect for these observations. We found that 
+half of the errors occurred in the slots that specified the date and place of 
+the seminar. The codelets and slipnet nodes could perhaps be further tuned for 
+these two categories of slots. However, our initial tests of the performance of 
+VMattie were extremely encouraging.</P>
+<P>&nbsp;</P>
+<P>Table 1. Probablity of filling slots of templates with the correct 
+values.</P>
+<P>&nbsp;</P><U>
+<P>Slot Category</U> <U>Slot Should be Filled</U> <U>Slot Should be 
+Blank</P></U>
+<P>Correct Incorrect Correct Incorrect</P>
+<P>Name of Seminar 73 1 26 0</P>
+<P>Day of Seminar 32 0 68 0</P>
+<P>Date of Seminar 13 3 84 0</P>
+<P>Time of Seminar 24 0 76 0</P>
+<P>Place of Seminar 19 2 79 0</P>
+<P>Topic of Seminar 29 1 70 0</P>
+<P>Name of Speaker 27 0 72 1</P>
+<P>Affiliation of Speaker 8 0 91 1</P>
+<P>Name of Organizer 60 1 39 0</P>
+<P>Name of New Organizer 10 0 90 0</P>
+<P>Email Address 93 0 7 0</P><B>
+<P>&nbsp;</P>
+<P>8 Further work</P></B>
+<P>This paper has focused on the perception side of VMattie. Her action 
+selection side, also up and running successfully, will be the subject of another 
+paper. The complete version of VMattie is currently being lab tested. We hope 
+she’ll soon be field tested.</P>
+<P>Vmattie’s successor, Conscious Mattie (Cmattie) is well into the design 
+stage. Her name derives from the fact that she’s to model the global workspace 
+of consciousness (Baars, 1988, 1997). Thus the Cmattie project has its cognitive 
+science side (cognitive modeling) as well as its computer science side 
+(intelligent software).</P>
+<P>Cmattie’s domain is exactly that of Vmattie. Cmattie will do the same job but 
+with some improvements. She will be able to: </P>
+<UL>
+  <LI>Remember past messages so as to respond more intelligently to her rare 
+  mistakes. 
+  <LI>Deal with multiple message types in a single message. 
+  <LI>Learn when and how best to dun wayward organizers. 
+  <LI>Warn organizers of time and place conflicts. 
+  <LI>Learn new message types as new slipnet nodes, allowing her to deal with 
+  colloquia, thesis defenses, etc. 
+  <LI>Fill in default information on the perception side.</LI></UL>
+<P>This last item will require a reworking of the slipnet leaving it more like 
+the Copycat model and less like a neural net.</P>
+<P>The cognitive modeling side of the project will lead us to include modules 
+implementing associative memory, learning (of several kinds), emotions, 
+metacognition and consciousness.</P><B>
+<P>&nbsp;</P>
+<P>9 Conclusion</P></B>
+<P>The design of natural language sensing systems is often a critical problem in 
+producing autonomous software agents that must communicate with humans. Here 
+we’ve provided a detailed description of an implemented natural language sensing 
+system for such agents "living" in a narrow domain. Our system is a successful 
+example of surface feature based natural language processing, made possible by 
+the analysis of a corpus of messages, along with information extraction by a 
+multitude of codelets. Vmattie is very much a multiagent system. We chose such 
+an architecture and its mechanisms trying to build a system that works much like 
+we think human minds work. The emergent understanding happens in VMattie much as 
+Minsky describes in his <B>Society of Mind</B> (1985). He says, " Each mental 
+agent by itself can only do some simple thing that needs no mind or thought at 
+all. Yet when we join these agents in societies… this leads to true 
+intelligence." Vmattie’s intelligence isn’t great, but it’s real.</P><B>
+<P>&nbsp;</P>
+<P>References:</P>
+<P>&nbsp;</P>
+<DIR></B>
+<P>Baars, Bernard (1988), <I>A Cognitive Theory of Consciousness</I>, Cambridge: 
+Cambridge University Press.</P>
+<P>Baars, Bernard (1997), <I>In the Theater of Consciousness</I>, Oxford: Oxford 
+University Press.</P>
+<P>Franklin, Stan (1995), <I>Artificial Minds, </I>Cambridge, MA: MIT Press. 
+</P>
+<P>Franklin, Stan, Art Graesser, Brent Olde, Hongjun Song, and Aregahegn Negatu 
+(1996) "<I>Virtual Mattie—an Intelligent Clerical Agent"</I> , AAAI Symposium on 
+Embodied Cognition and Action, Cambridge MA.</P>
+<P>Franklin, Stan and Art Graesser (1997), "Is it an Agent, or just a Program?: 
+A Taxonomy for Autonomous Agents," Intelligent Agents III, Springer-Verlag, 
+21-35</P>
+<P>Hofstadter, D. R. and M. Mitchell, (1994), <I>"The Copycat Project: A model 
+of mental fluidity and analogh-making." </I>In Holyoak, K.J. &amp; Barnden, J. 
+A. (Eds.) Advances in Cconnectionist and Neural Computation Theory, Vol. 2: 
+Analogical connections. Norwood, NJ: Ablex.</P>
+<P>Maes, Pattie, <I>"How to do the right thing",</I> Connection Science, 1:3. 
+1990.</P>
+<P>Minsky, Marvin (1985), <I>Society of Mind,</I> New York: Simon and 
+Schuster.</P>
+<P>Mitchell, M., (1993), <I>Analogy-Making as Perception</I>. Cambridge, Mass.: 
+MIT Press.</P><B>
+<P>&nbsp;</P></DIR></B></FONT></BODY></HTML>

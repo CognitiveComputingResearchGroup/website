@@ -1,0 +1,1122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0173)http://www.msci.memphis.edu/~cmattie/Sparse_Distributed_Memory_as_a_tool_for_Conscious_Software_Agents/Sparse_Distributed_Memory_as_a_tool_for_Conscious_Software_Agents.html -->
+<HTML><HEAD><TITLE>Sparse Distributed Memory as a tool for Conscious Cognitive Software Agents</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2713.1100" name=GENERATOR></HEAD>
+<BODY link=#0000ff>
+<DIR>
+<DIR>
+<DIR>
+<DIR><B><FONT size=5>
+<P align=center>Sparse Distributed Memory as a tool for Conscious Software 
+Agents</P>
+<P align=center>&nbsp;</P></B></FONT>
+<P align=center>Ashraf Anwar and Stan Franklin</P>
+<P align=center>Institute for Intelligent Systems</P>
+<P align=center>The University of Memphis</P><B><FONT size=5>
+<P align=center>&nbsp;</P></DIR></DIR></DIR></DIR></FONT>
+<P align=center>Abstract </P></B>
+<P align=center>&nbsp;</P><FONT size=2>
+<P>SDM (Sparse Distributed Memory) is a content addressable, associative memory 
+technique which relies on close memory items tending to be clustered together, 
+with some abstraction and blurring of details. We use the auto-associative 
+version of SDM as an associative memory in the conscious software agent, 
+CMattie. SDM retrieves the behaviors and emotions associated with an incoming 
+percept. This association relies on similar percepts having occured in the past 
+and having been associated with some behaviors and emotions. So, observing some 
+percept later on should trigger into attention the previous behaviors taken and 
+emotions aroused when similar percepts were observed in the past. Each 
+perception register contains some seminar key value like seminar organizer, 
+speaker, date, location, etc… The results obtained so far are good and 
+promising. Some other possible use for Sparse Distributed Memory in CMattie is 
+the disambiguation of each perception register by removal of some inherent noise 
+or misspells.</P></FONT>
+<P>&nbsp;</P>
+<P>&nbsp;</P><B>
+<P align=center>Autonomous, Cognitive, and Conscious Agents</P>
+<P align=center>&nbsp;</P></B><FONT size=2>
+<P>I find the definition of an autonomous agent in Franklin () one of the most 
+accurate definitions reflecting the broad sense of the word. According to 
+Franklin, an autonomous agent is an agent which is situated in an environment, 
+senses it, acts upon it overtime such that its actions may affect what the agent 
+senses next, and its actions are in pursue of its own agenda. See Franklin 
+(1995, 1997), Franklin and Graesser (1997), and Russel and Norvig (1995) for 
+more detailed discussion and examples.</P>
+<P>&nbsp;</P>
+<P>A cognitive agent, on the other hand, is an autonomous agent which -or who- 
+has some of the cognitive capabilities : problem solving, planning. learning, 
+perception, emotions, ...etc (Franklin and Graesser, 1997).</P>
+<P>&nbsp;</P>
+<P>A conscious agent is a cognitive one with the extra functionality of 
+consciousness built in. We adopt the definition of consciousness from Baars 
+(1995).</P>
+<P>&nbsp;</P>
+<P>According to the above definitions, we have a broad range of autonomous 
+agents ranging from simplest ones, e.g., a thermostat, to the most sophisticated 
+ones, humans. Our agent, Cmattie, is considered to be a conscious agent, which 
+implies that it is cognitive and autonomous as well.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT><B>
+<P align=center>A Tour with SDM</P></B>
+<P>&nbsp;</P>
+<P><FONT size=2>SDM is the work of Kanerva, see Kanerva (1990) for more details 
+and Anwar (1997, chapter 2) for somewhat brief overview of its working. The 
+auto-associative version of SDM is truly an associative memory technique where 
+the contents and the addresses are from the same space and used alternatively, 
+see Kanerva (1990) and (). The inner workings of SDM rely on large binary 
+spaces. The dimension of the space determines how rich is each word. Another 
+important factor is how many actual memory locations are there in the space, 
+number of hard locations. Features are represented as one or more bits. Groups 
+of features are concatenated to form a word which becomes a candidate for 
+writing into SDM. When writing copy of this binary string is placed in all close 
+enough hard locations. When reading, a close enough cue would reach all close 
+enough hard locations and get some sort of aggregate or average out of them. 
+Reading is not always successful. Depending on the cue and the previously 
+written information, among other factors, convergence or divergence during a 
+reading operation may occur. If convergence occurs, the pooled word will be the 
+closest match (with abstraction) of the input reading cue. On the other hand, 
+when divergence occurs, there is no relation -in general- between the input cue 
+and what is retrieved from memory.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P><B>
+<P align=center>SDM from </FONT>the<FONT size=2> Inside Out.</P>
+<P align=center>&nbsp;</P></B>
+<P>The addresses of the locations <I>N ` </I>of a sparse memory are a uniform 
+random sample of the address space <I>N which is made of the 2<SUP>n</SUP> 
+possible binary addresses, where n is the dimension of the space. </I><I>N</I> 
+</FONT><FONT face=Symbol size=2>¢</FONT><I><FONT size=2> </I>will be called set 
+of <U>hard locations</U> to emphasize that they are physical locations. The 
+distance between locations means distance between corresponding addresses.</P>
+<P>&nbsp;</P>
+<P>Nearest <I>N </I></FONT><FONT face=Symbol size=2>¢</FONT><I><FONT 
+size=2>-</I>neighbor x</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> to 
+an element (address) x of <I>N</I>, is the most similar element of <I>N 
+</I></FONT><FONT face=Symbol size=2>¢</FONT><I><FONT size=2> </I>to x. If X 
+</FONT><FONT face=Symbol size=2>Ì</FONT><FONT size=2> N, then X </FONT><FONT 
+face=Symbol size=2>¢</FONT><FONT size=2> </FONT><FONT face=Symbol 
+size=2>Ì</FONT><FONT size=2> N </FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2> is the set of the nearest <I>N </I></FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2>-neighbors of elements of X :</P>
+<P>&nbsp;</P>
+<P>X </FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> = { x</FONT><FONT 
+face=Symbol size=2>¢</FONT><FONT size=2>| x </FONT><FONT face=Symbol 
+size=2>Î</FONT><FONT size=2> X }</P>
+<P>&nbsp;</P>
+<P>Distance of the nearest location d(x,x</FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2>):</P>
+<P>&nbsp;</P>
+<P>N(d) = Pr{ d(x,y) </FONT><FONT face=Symbol size=2>£</FONT><FONT size=2> d }, 
+for arbitrary points in the binary space x and y</P>
+<P>&nbsp;</P>
+<P>N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>(d) = Pr{ 
+d(x,x</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>) </FONT><FONT 
+face=Symbol size=2>£</FONT><FONT size=2> d }</P>
+<P>= 1 - [ 1 - N(d) ]<SUP>N</FONT><FONT face=Symbol 
+size=2>¢</P></SUP></FONT><FONT size=2>
+<P>= 1 - [ 1 - N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> * N(d) / 
+N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> ]<SUP>N</FONT><FONT 
+face=Symbol size=2>¢</P></FONT><FONT size=2>
+<P></SUP></FONT><FONT face=Symbol size=2>@</FONT><FONT size=2> 1 - 
+e<SUP>-N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> * N(d)</SUP>,</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>N(d) </FONT><FONT face=Symbol size=2>@</FONT><FONT size=2> -ln[ 1 - 
+N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>(d)] / N</FONT><FONT 
+face=Symbol size=2>¢</FONT><FONT size=2> , which implies that:</P>
+<P>d </FONT><FONT face=Symbol size=2>@</FONT><FONT size=2> N<SUP>-1</SUP>[ -ln(1 
+- N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>(d)) / N</FONT><FONT 
+face=Symbol size=2>¢</FONT><FONT size=2>]</P>
+<P>&nbsp;</P>
+<P>The median of the distance d(x,x</FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2>) = N<SUP>-1</SUP>[ -ln(0.5) / N</FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2>].</P>
+<P>&nbsp;</P><I>
+<P>For n=1000 and 10000 hard locations, </I>the median is 424. That median is a 
+good measure for the distance between a random point of N and the hard location 
+nearest to it.</P>
+<P>&nbsp;</P><I>
+<P align=justify>The nearest neighbor method</P></I>
+<P>X is random set of 10,000 words of {0,1}<SUP>1000</SUP>. There are 
+10<SUP>6</SUP> hard locations to store X in. The goal is to find the stored word 
+that matches a test word the best. We store each word </FONT><FONT face=Symbol 
+size=2>z</FONT><FONT size=2> of X in its nearest hard location </FONT><FONT 
+face=Symbol size=2>z¢</FONT><FONT size=2>.</P>
+<P>&nbsp;</P>
+<P>However, to find the best match to a test word <I>z </I>, if we read the 
+nearest occupied hard location <I>z</I></FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2>, it would not, in general, contain the best match 
+or even probably a good match.</P>
+<P>&nbsp;</P>
+<P></P>
+<P></FONT><FONT face=Symbol size=2>z</FONT><FONT size=2> <IMG height=76 
+src="Sparse Distributed Memory as a tool for_files/Image9.gif" 
+width=145></FONT><FONT face=Symbol size=2>z¢</P></FONT><I><FONT size=2>
+<P>Fig 1: The distance from z to the location </FONT><FONT face=Symbol 
+size=2>z¢</FONT><FONT size=2>, where the best-matching word </FONT><FONT 
+face=Symbol size=2>z </FONT><FONT size=2>is stored. The "unknown" distance 
+d(z,</FONT><FONT face=Symbol size=2>z¢</FONT><FONT size=2>) is approximately 454 
+bits.</P></I>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>For example, in the<I> above figure</I>, <I>z </I>is a test word. 
+</FONT><FONT face=Symbol size=2>z</FONT><FONT size=2> is the element of X most 
+similar to <I>z</I>. d(<I>z </I>, </FONT><FONT face=Symbol size=2>z</FONT><FONT 
+size=2>) = 200 (i.e. they are quite similar ). Assume that d(</FONT><FONT 
+face=Symbol size=2>z</FONT><FONT size=2> , </FONT><FONT face=Symbol 
+size=2>z¢</FONT><FONT size=2>) = 424 (median distance). Then using the third 
+side of a triangle rule, d(<I>z </I>, </FONT><FONT face=Symbol 
+size=2>z¢</FONT><FONT size=2>) </FONT><FONT face=Symbol size=2>@</FONT><FONT 
+size=2> a + b - 2*A*b / n = 454 bits. About 0.0017 N</FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2> = 1700 hard locations, are within 454 bits of 
+<I>z</I>. About 10<SUP>-2</SUP> of them (17) locations are occupied by elements 
+of X. Hence, </P>
+<P>Pr { nearest X</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>-neighbor 
+of <I>z</I> = </FONT><FONT face=Symbol size=2>z¢</FONT><FONT size=2> | 
+d(<I>z</I> , </FONT><FONT face=Symbol size=2>z</FONT><FONT size=2>) = 200 } 
+</FONT><FONT face=Symbol size=2>@</FONT><FONT size=2> 1/17</P>
+<P>&nbsp;</P>
+<P>It can be shown using the third side of a triangle rule that two dissimilar 
+addresses <I>u , v </I>can refer to the same hard location, i.e., 
+<I>u</I></FONT><FONT face=Symbol size=2>¢</FONT><I><FONT size=2> = 
+v</I></FONT><FONT face=Symbol size=2>¢</P></FONT><FONT size=2>
+<P>&nbsp;</P>
+<P>Things become worse when data other than the addresses themselves are stored 
+in memory</P>
+<P>(&lt;</FONT><FONT face=Symbol size=2>z</FONT><FONT size=2>,</FONT><FONT 
+face=Symbol size=2>h</FONT><FONT size=2>&gt; instead of &lt;</FONT><FONT 
+face=Symbol size=2>z</FONT><FONT size=2>,</FONT><FONT face=Symbol 
+size=2>z</FONT><FONT size=2>&gt;). The probability of success in our example is 
+1/17. We cannot even tell, by reading from memory, whether the outcome is a 
+success or failure (which corresponds psychologically to knowing whether one 
+knows).</P><B>
+<P>&nbsp;</P></B><I>
+<P>How is it Distributed Memory?</P></I><B>
+<P>&nbsp;</P></B>
+<P>Many Storage locations participate in a single write or read operation. So, 
+data will be retrieved on the basis of similarity of address. If 
+&lt;</FONT><FONT face=Symbol size=2>z</FONT><FONT size=2>,</FONT><FONT 
+face=Symbol size=2>h</FONT><FONT size=2>&gt; is a stored address-data pair then 
+reading from an address <I>x</I> that is sufficiently similar to </FONT><FONT 
+face=Symbol size=2>z</FONT><FONT size=2> retrieves a word <I>y </I>that is even 
+more similar to </FONT><FONT face=Symbol size=2>h</FONT><FONT size=2> than <I>x 
+</I>is to </FONT><FONT face=Symbol size=2>z</FONT><FONT size=2>. The 
+similarities are comparable since the address to memory and the data are 
+elements of the same metric space N.</P>
+<P>&nbsp;</P><I>
+<P>How it Works?</P></I>
+<P>&nbsp;</P>
+<P>The storage locations and their addresses are given from the start, and only 
+the contents are modifiable. The threshold of the address decoders can even be 
+fixed.</P>
+<P>&nbsp;</P><I>
+<P>Access Circle, O</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>(x)</I>, 
+is the set of hard locations O</FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2>(r,x) in the circle O(r,x). In this notation we are omitting the access 
+radius r which is fixed to the permissible distance range of contributing 
+(accessible) locations in Read/Write operations. Note that O</FONT><FONT 
+face=Symbol size=2>¢</FONT><FONT size=2>(x) = N</FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2> </FONT><FONT face=Symbol size=2>Ç</FONT><FONT 
+size=2> O(x). For example, if r = 0.001, then 0.001 of N (and 0.001 of 
+N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> on the average) is 
+accessed at once. From <I>table 2.1.1-1</I>, a circle of radius of 451 bits 
+covers 0.001 of the space, and so the access radius r<SUB>0.001</SUB> = 451 
+bits.</P>
+<P>&nbsp;</P>
+<P>Most locations in the access circle are quite far from the center. The 
+location closest to the center is 424 bits on the average (median distance).</P>
+<P>&nbsp;</P>
+<P>The average distance from the center to the 1000 locations of the access 
+circle is 448 bits (a circle with 448-bit radius encloses 0.001 / 2= 0.0005 of 
+the space) which is only three bits short of the maximum distance.</P>
+<P>&nbsp;</P>
+<P><I>Access Overlap, I</FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2>(x,y)</I>, is the set of hard locations accessible from both x and y, 
+I</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>(x,y) = O</FONT><FONT 
+face=Symbol size=2>¢</FONT><FONT size=2>(x) </FONT><FONT face=Symbol 
+size=2>Ç</FONT><FONT size=2> O</FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2>(y). The mean number of hard locations in this access overlap depends on: 
+1- size of access circle</P>
+<DIR>
+<DIR>
+<DIR>
+<P>2- distance d(x,y) between the centers</P></DIR></DIR></DIR>
+<P><I>Content of a location, C(x</FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2>)</I>, is the multiset of all the words that have ever been written to 
+it, mapped somehow. </P>
+<P><I>Writing in x</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> 
+</I>means adding the written word, </FONT><FONT face=Symbol size=2>h</FONT><FONT 
+size=2>, to the multiset of words C(x</FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2>) contained in x</FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2>, C(x</FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2>) = C(x</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>) 
+</FONT><FONT face=Symbol size=2>y</FONT><FONT size=2> [</FONT><FONT face=Symbol 
+size=2>h</FONT><FONT size=2>]. <I>Writing word </FONT><FONT face=Symbol 
+size=2>h</I></FONT><FONT size=2> <I>at </FONT><FONT face=Symbol 
+size=2>x</FONT><FONT size=2> </I>means writing </FONT><FONT face=Symbol 
+size=2>h</FONT><FONT size=2> in all the (1000) hard locations accessible from 
+</FONT><FONT face=Symbol size=2>x</FONT><FONT size=2>.</P>
+<P>&nbsp;</P>
+<P><I>Data at x, D(x), </I>is the pooled contents (multiunion) of all locations 
+accessible from <I>x</I>, D(x) = </FONT><FONT face=Symbol size=2>y</FONT><FONT 
+size=2> C(y</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>) , 
+y</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> </FONT><FONT face=Symbol 
+size=2>Î</FONT><FONT size=2> O</FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2>(x).</P><B>
+<P>&nbsp;</P>
+<P>&nbsp;</P></B><I>
+<P>Table 1: Mean number of hard locations in access overlap of two circles with 
+radii r<SUB>0.001</SUB> = 451 in a 1,000-dimensional memory with 1,000,000 
+locations.</P>
+<P>d is the distance, in bits, between the centers of the two circles.</P></I>
+<P>&nbsp;</P>
+<P><IMG height=458 
+src="Sparse Distributed Memory as a tool for_files/Image10.gif" 
+width=232></P></FONT><I>
+<P>Source: Kanerva (1990)</P>
+<P>&nbsp;</P></I><FONT size=2>
+<P>If the word </FONT><I><FONT face=Symbol size=2>h</I></FONT><FONT size=2> has 
+been written with the address<I> </FONT><FONT face=Symbol size=2>x</FONT><FONT 
+size=2>,</I> the multiset D(x) -when reading at x- contains |O</FONT><FONT 
+face=Symbol size=2>¢</FONT><FONT size=2>(x) </FONT><FONT face=Symbol 
+size=2>Ç</FONT><FONT size=2> O</FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2>(</FONT><FONT face=Symbol size=2>x</FONT><FONT size=2>)| copies of 
+</FONT><I><FONT face=Symbol size=2>h</FONT><FONT size=2>,</I> one from each 
+location accessible from both x and </FONT><FONT face=Symbol 
+size=2>x</FONT><FONT size=2>.</P><I>
+<P>&nbsp;</P>
+<P>Reading at x </I>means taking a representative (element of N) of the data at 
+x. <I>Word at x, W(x)</I> is a properly chosen representative of D(x).</P>
+<P>&nbsp;</P>
+<P><I>Finding the best match </I>requires :</P>
+<P>1-not too many words have been stored, sparse</P>
+<P>2-the first reading address (test pattern) is sufficiently close to the 
+writing address of the target word.</P>
+<P>&nbsp;</P>
+<P>Storing the entire data set (10<SUP>4</SUP>) each in 1000 locations, means 
+that some 10<SUP>7</SUP> words are stored in memory. This gives our first 
+estimate for the capacity of a storage location which is 10 words per 
+location.</P>
+<P>&nbsp;</P>
+<P>Reading will pool the data of about 1000 locations, yielding a multiset D(x) 
+of about 10,000 words.</P>
+<P>&nbsp;</P>
+<P>|X| = 10,000</P>
+<P>|O</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>(x)| </FONT><FONT 
+face=Symbol size=2>@</FONT><FONT size=2> 1000</P>
+<P>|C(x</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>)| </FONT><FONT 
+face=Symbol size=2>@</FONT><FONT size=2> 10</P>
+<P>|D(x)| </FONT><FONT face=Symbol size=2>@</FONT><FONT size=2> 10,000</P>
+<P>C(x</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>) = X </FONT><FONT 
+face=Symbol size=2>Ç</FONT><FONT size=2> O(x</FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2>)</P>
+<P>&nbsp;</P>
+<P>A representative of the pooled data D(z) - when reading at test word z - is 
+obtained by computing an element of <I>N</I> that is an archetype of the pooled 
+data D(z) but not necessarily an element of it. We will take the average of the 
+words of D(z) (majority rule) . This average is the best representative of D(z) 
+in the sense that it is the word of N with the smallest mean distance to the 
+words of D(z). The ith bit of the average is given by summing over the ith bits 
+of the words in the pooled data and then thresholding with half the size of the 
+pooled data: </P>
+<P>W<SUB>i</SUB>(z) = 1 iff </FONT><FONT face=Symbol size=2>S</FONT><FONT 
+size=2> </FONT><FONT face=Symbol size=2>x</FONT><SUB><FONT size=2> i 
+</SUB></FONT><FONT face=Symbol size=2>³</FONT><FONT size=2> |D(z)| /2 , 
+</FONT><FONT face=Symbol size=2>x</FONT><FONT size=2> </FONT><FONT face=Symbol 
+size=2>Î</FONT><FONT size=2> D(z). That representative is a good one as long as 
+the words written in memory are a random sample of N.</P>
+<P>&nbsp;</P><I>
+<P>Convergence to the Best-Matching Word</P></I>
+<P>&nbsp;</P>
+<P>When we read at </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2>, if we 
+have previously written the word </FONT><FONT face=Symbol size=2>x</FONT><FONT 
+size=2> at </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2>, we retrieve 
+1000 copies of </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2> in addition 
+to about 10,000 copies of other words for a total of 11,000 (10,000 if reading 
+at a random address). However, the other words come mostly in ones or in very 
+small groups, since the intersection of the read circle O</FONT><FONT 
+face=Symbol size=2>¢</FONT><FONT size=2>(</FONT><FONT face=Symbol 
+size=2>x</FONT><FONT size=2>) with the write circle O</FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2>(x), for most x in N and in X, is about 0.001 of 
+O</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>(</FONT><FONT face=Symbol 
+size=2>x</FONT><FONT size=2>), or just one hard location. Against such 
+<I>background noise</I>, the weight of 1,000 is sufficient for the retrieval 
+(reconstruction) of </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2>.</P>
+<P>Pr {guessing 1 bit correctly} </FONT><FONT face=Symbol size=2>@</FONT><FONT 
+size=2> 1 - 10<SUP>-22</P></SUP>
+<P>Pr {guessing all 1000 bits correctly} </P></FONT><FONT face=Symbol size=2>
+<P>@ </FONT><FONT size=2>(1 - 10<SUP>-22</SUP>)<SUP>1000</SUP></FONT><FONT 
+face=Symbol size=2> @</FONT><FONT size=2> 1 - 10<SUP>-19</P></SUP>
+<P>Thus, we are nearly certain that W(</FONT><FONT face=Symbol 
+size=2>x</FONT><FONT size=2>) = </FONT><FONT face=Symbol 
+size=2>x</P></FONT><FONT size=2>
+<P>&nbsp;</P>
+<P>When we read starting from test word z, the new distance to the target 
+d(W(z), </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2>) depends on the 
+old distance, d(z, </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2>). 
+<I>See figure 2.4.2-1 next page. </I>Iterated reading fails to converge to the 
+best-matching word if the original distance, d(z, </FONT><FONT face=Symbol 
+size=2>x</FONT><FONT size=2>), is too large. In our example, a test word more 
+than 209 bits (critical distance) from the target will not, in general, find its 
+target. The reading sequence will diverge until it becomes near 500 
+(indifference distance). <I>See the figure next page.</P></I>
+<P>&nbsp;</P>
+<P><I>Chance convergence </I>might happen if an initially diverging sequence 
+converge to a random word of the data set X. This is characterized by a very 
+long expected time to convergence. Expected time of <I>chance convergence</I> is 
+extremely long. In our example, the probability that a random point of N is 
+within the critical distance of 209 bits of the nearest point of X is something 
+like 10<SUP>-50</SUP>, and so the expected time of chance convergence to some 
+point of X is about 10<SUP>50 </SUP>iterations.</P>
+<P>&nbsp;</P>
+<P><I>Critical Distance </I>is the distance beyond which divergence is more 
+likely than convergence (209 bits in our example). As more words are stored in 
+memory, the critical distance decreases until it reaches zero, and thereafter it 
+vanishes, meaning that stored words are no longer retrievable, i.e. there is no 
+convergence anywhere.</P>
+<P>&nbsp;</P>
+<P><IMG height=302 
+src="Sparse Distributed Memory as a tool for_files/Image11.gif" 
+width=281></P><I>
+<P>Fig 2: New distance to target as a function of old distance</P>
+<P>Source: Kanerva (1990)</P>
+<P>&nbsp;</P></I>
+<P></P>
+<P><IMG height=283 
+src="Sparse Distributed Memory as a tool for_files/Image12.gif" 
+width=324></P><I>
+<P>Fig 3: Converging sequence (x --&gt; x`), and diverging sequence y --&gt; 
+?</P>
+<P>Source: Kanerva (1990)</P></I>
+<P>&nbsp;</P>
+<P><I>Rates of convergence and divergence</I> decrease as we get closer to the 
+critical distance. When we are sufficiently far from the critical distance, 
+convergence to the target or divergence to random indifferent points is rapid 
+(fewer than ten iterations, as a rule). The comparison of adjacent items of a 
+sequence soon reveals whether the sequence will converge or (initially) 
+diverge.</P>
+<P>&nbsp;</P>
+<P><I>Memory Capacity T </I>is the size of the data set for which the critical 
+distance is zero.</P>
+<P>T = N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> / H(n)</P>
+<P>where H(n) = [ F<SUP>-1 </SUP>(1/ 2<SUP>1/n</SUP>) ]<SUP>2</P></SUP>
+<P>For n = 1000, H(n) = 10.22 </FONT><FONT face=Symbol size=2>@</FONT><FONT 
+size=2> 10</P>
+<P>Hence, T = N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> / 10 
+(one-tenth of the number of hard locations)</P><I>
+<P>See Table 2 below.</P>
+<P>&nbsp;</P>
+<P>Table 2: Capacity of sparse distributed memory with N` storage locations.</P>
+<P>&nbsp;</P></I>
+<P><IMG height=275 
+src="Sparse Distributed Memory as a tool for_files/Image13.gif" 
+width=282></P><I>
+<P>Source: Kanerva (1990)</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Full memory </I>is a memory filled to capacity. When writing word 
+</FONT><FONT face=Symbol size=2>x</FONT><FONT size=2> in a full memory, the 
+probability of reading </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2> at 
+</FONT><FONT face=Symbol size=2>x</FONT><FONT size=2> is, by definition, 0.5. 
+<I>Overloaded Memory </I>is a memory filled beyond capacity. When writing word 
+</FONT><FONT face=Symbol size=2>x</FONT><FONT size=2> in an overloaded memory, 
+the probability of reading </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2> 
+at </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2> is less than 0.5. <I>In 
+both full and overloaded memories,</I> the probability of reading </FONT><FONT 
+face=Symbol size=2>x</FONT><FONT size=2> from a point only one bit far is quite 
+small (words forgotten because of increased noise), and a sequence of 
+successively read words diverges rapidly. </P>
+<P>&nbsp;</P>
+<P><I>Capacity of a storage location </I>can be calculated as follows :</P>
+<P>&nbsp;</P>
+<P>Total number of words in memory</P>
+<P>= average number of points stored in each hard loc. * number of hard loc.</P>
+<P>= (T * p) * N</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2> , where 
+access radius is r<SUB>p</P></SUB>
+<P>&nbsp;</P>
+<P>Average number of words per location (Capacity) = T * p = (N</FONT><FONT 
+face=Symbol size=2>¢</FONT><FONT size=2> / 10) * p</P>
+<P>= 100 words (p= 0.001)</P>
+<P>&nbsp;</P>
+<P>Since the average word of the pooled data can be computed from n-bit sums, a 
+bit location can be realized as a <I><U>counter</I></U> that is incremented by 1 
+to store 1 and decremented by 1 to store 0. A bit location that can store the 
+integers [-50,50] will suffice. The range of the values can be reduced to 
+perhaps as little as [-10,10] by :</P>
+<P>1- reducing the size of the write circle</P>
+<P>2- not attempting to fill the memory to its capacity</P>
+<P>&nbsp;</P>
+<P>After writing word </FONT><FONT face=Symbol size=2>x</FONT><FONT size=2> , 
+each subsequent writing near </FONT><FONT face=Symbol size=2>x</FONT><FONT 
+size=2> will modify some of the 1000 copies of </FONT><FONT face=Symbol 
+size=2>x</FONT><FONT size=2> . A location survives one write operation with 
+probability q = 1 - p = 1 - 0.001 = 0.999. Hence,</P>
+<P>Pr { a location survives L write operations } = q<SUP>L</P></SUP>
+<P>&nbsp;</P><I>
+<P>Some Psychological Aspects</P></I>
+<P>&nbsp;</P>
+<P>Indication of <I>knowing that one knows</I> is indicated by fast convergence 
+of read operations. </P><I>
+<P>&nbsp;</P>
+<P>Tip-of-the-tongue state</I> corresponds to being about the critical distance 
+(slow rate of convergence).</P>
+<P>&nbsp;</P>
+<P><I>Rehearsal</I> is done by writing an item many times in memory.</P>
+<P>&nbsp;</P>
+<P>A full or overloaded memory could support momentary feelings of familiarity 
+that would fade away rapidly, as if <I>one could not maintain attention.</P>
+<P>&nbsp;</P>
+<P>Sparse Distributed Memory Construction</P></I><B>
+<P>&nbsp;</P></B>
+<P><I>Addressing :</I> The memory will be built of addressable storage 
+locations. </P>
+<P>A location is activated whenever a read or write address is within a certain 
+number of bits of the location’s address.</P>
+<P>&nbsp;</P><I>
+<P>Storage :</I> A storage location has n counters, one for every bit.</P>
+<P>&nbsp;</P><I>
+<P>Writing :</I> To write 1 in a bit means to increment the counter. To write 0 
+in a bit means to decrement the counter or to do nothing.</P>
+<P>&nbsp;</P>
+<P><I>Reading :</I> Retrieval is done by pooling the contents of the storage 
+locations activated by the read address, and then finding for every bit whether 
+zeros or ones are in the majority.</P>
+<P>&nbsp;</P>
+<P><I>Address Decoding :</I> A storage location should be accessible from 
+anywhere within r<SUB>p</SUB> bits of the location’s address. Then, the linear 
+threshold neurons can be used for address decoding. The threshold for every 
+address-decoder neuron would be fixed to r<SUB>p</SUB> units below the decoder 
+address (maximum weighted sum), i.e. S - r<SUB>p </SUB>.</P>
+<P>&nbsp;</P>
+<P>In computing the <I>average word</I>, the pooled bit sums are compared with a 
+certain threshold which is the mean bit sum (add 1 for one and -1 for zero) over 
+all the data stored in memory if writing 0 is decrementing the counter, or the 
+mean count of ones over all the data stored in memory if writing 0 is doing 
+nothing.</P>
+<P>&nbsp;</P>
+<P>Each bit location should have 3 lines : address-decoder selection (in), write 
+(in), and read (out).</P>
+<P>&nbsp;</P>
+<P>Since many bit locations are pooled to form a single output bit from memory, 
+they must be connected to a common output line.</P>
+<P>&nbsp;</P>
+<P>Writing the data corresponds to using a matching network that takes one input 
+line and distributes it to the same bit locations that are pooled for a single 
+output bit.</P>
+<P>&nbsp;</P>
+<P>We can use the same wire for both input and output. Alternatively, we </P>
+<P>can use matched pair of separate corresponding input and output lines.</P>
+<P>&nbsp;</P><I>
+<P>Autonomous Learning System Organization</P></I><B>
+<P>&nbsp;</P>
+<P></B>Our autonomous learning agent will function independently, interact with 
+its environment and record its interaction to have the potential for learning 
+and adaptation. It will use sparse distributed memory.</P>
+<P>&nbsp;</P>
+<P>Binary vectors will stand for patterns of binary features. The mathematics 
+generalize to patterns of multivalued features. The most important thing is 
+that, the number of features must be large.</P>
+<P>&nbsp;</P>
+<P>A pattern can be used both as an address and as a datum, a sequence of 
+patterns can be stored as a pointer chain.</P>
+<P>&nbsp;</P>
+<P>Addressing the memory need not be exact. The address patterns that have been 
+used as write addresses <I>attract</I>, meaning that reading within the critical 
+distance of such an address retrieves a pattern that is <I>closer</I> to the 
+written pattern than the read address is to the write address. Three to six 
+iterations will usually suffice to retrieve original patterns.</P>
+<P>&nbsp;</P>
+<P>When similar patterns (an object viewed from different angles and distances) 
+have been used as write addresses, the individual patterns written with those 
+addresses cannot be recovered exactly. What is recovered, instead, is a 
+statistical average (abstraction) of the patterns written in that neighborhood 
+of addresses. The object is considered to occupy a region of the pattern space 
+with poorly defined boundaries (concept).</P>
+<P>&nbsp;</P><I>
+<P>Modeling the World</P></I>
+<P>&nbsp;</P>
+<P>Many things appear to be learned by nothing more than repeated exposure to 
+them (learn from experience). Learning is model building. We build an internal 
+model of the world and then operate with the model. That modeling is so basic to 
+our nature that we are hardly aware of it.</P>
+<P>&nbsp;</P>
+<P>The modeling mechanism constructs objects and individuals. A person is 
+constantly changing and our view of him are different at different times, yet we 
+perceive him as "that person".</P>
+<P>&nbsp;</P>
+<P>Operating with the model is like operating with a scale model. The model 
+mimics actions and interactions of objects and individuals. The more experience 
+we have, the more faithfully are the dynamics of the world reproduced by the 
+model.</P>
+<P>&nbsp;</P>
+<P>The model simply captures statistical regularities of the world, as mediated 
+by the senses, and is able to reproduce them later. Our world model includes 
+ourselves as a part. We can prepare ourselves for a situation by imagining 
+ourselves in the situation.</P>
+<P>&nbsp;</P>
+<P>Subjective experience produced by the outside world is of the same quality as 
+that produced by the internal model of the world. Our internal and external 
+"pictures" merge without our being aware of it. We scan our surroundings for 
+overall cues and <I><U>fill in much of the detail</I></U> from the internal 
+model. However, when something unusual happens, we begin to pay attention. We 
+are altered by the discrepancy between the external report of what is happening 
+and the internal report of what <I><U>should</I></U> be happening on the basis 
+of the past experience. Moreover, the <I>internal </I>model affects our 
+<I>perception</I> profoundly, without our being aware of it (prejudgments).</P>
+<P>&nbsp;</P><I>
+<P>Storing the World Model in SDM</P></I>
+<P>&nbsp;</P>
+<P>At any given moment, the individual is in some subjective mental state. A 
+flow of these states (sequence) describes the individual’s subjective experience 
+over time. The state space for the world is immense in comparison with that for 
+an individual’s experience.</P>
+<P>&nbsp;</P>
+<P>Individual’s sensory information at a moment is represented as a long vector 
+of features. A sequence of such vectors represent the passage of time.</P>
+<P>&nbsp;</P>
+<P>Since information supplied by the senses and information supplied by the 
+memory can produce the <I>same subjective experience</I>, they are both fed into 
+some common part of the architecture, the <I><U>focus</I></U>.</P>
+<P>&nbsp;</P>
+<P>Sequence of patterns in the focus represents the system’s subjective 
+experience about the world over time <I>(See figure 4).</P></I>
+<P>&nbsp;</P>
+<P>Since sequences are stored as pointer chains, the patterns of a sequence are 
+used both as addresses and as data, i.e.,<I> Focus = MAR + MDR.</P></I>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P><IMG height=186 
+src="Sparse Distributed Memory as a tool for_files/Image14.gif" 
+width=433></P><I>
+<P>Fig 4: Senses, Memory, and Focus in SDM</P>
+<P>Source: Kanerva (1990)</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></I>
+<P><IMG height=274 
+src="Sparse Distributed Memory as a tool for_files/Image15.gif" width=433></P>
+<P>&nbsp;</P><I>
+<P>Fig 5: Organization of an autonomous system using SDM</P>
+<P>Source: Kanerva (1990)</P></I>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>The world model is updated by writing into the memory as follows :</P>
+<P>&nbsp;</P>
+<P>1. The pattern held in the focus at time t is used to address the memory, 
+activating a set of memory locations.</P>
+<P>&nbsp;</P>
+<P>2. The response read from those locations is the memory prediction of the 
+sensory input at time t+1.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>3. If the prediction agrees with the sensory input, there is no need to 
+adjust the memory, and the read pattern simply becomes the contents of the focus 
+at time t+1.</P>
+<P>&nbsp;</P>
+<P>4. If the prediction disagrees with the sensory input, a third correct 
+pattern is computed from them (average) and it becomes the contents of the focus 
+at time t+1. However, before it is used to address the memory at time t+1 , it 
+is written in the locations from which the faulty output was just read (the 
+locations selected at time t).</P>
+<P>&nbsp;</P>
+<P>As the correction patterns are written into memory over time, the memory 
+builds a better and better model of the world, constrained only by the senses 
+ability to discriminate and the memory capacity to store information.</P><B>
+<P>&nbsp;</P></B><I>
+<P>Including Action in the World Model</P></I>
+<P>&nbsp;</P>
+<P>The system needs to act and learn from its interaction with the world. To 
+act, the system needs motors (effectors). To learn, the system must <I>model</I> 
+its own actions.</P>
+<P>&nbsp;</P>
+<P>Learning to perform actions means learning to reproduce sequences of patterns 
+that drive the muscles. Thus, the system’s own actions can be included in the 
+world model by storing motor sequences in memory in addition to sensory 
+sequences.</P>
+<P>&nbsp;</P>
+<P>Since the way in and out of the memory is through the focus, the system 
+motors should be driven from the focus.</P>
+<P>&nbsp;</P>
+<P>As the system’s subjective experience is based on the information in the 
+focus, deliberate action becomes part of the system’s subjective experience 
+without the need for additional mechanisms <I>(See figure 5).</P></I>
+<P>&nbsp;</P>
+<P>Some components of the focus (50-80%) correspond to and can be controlled by 
+the system sensors. Others (10-20%) drive the system motors. The focus could 
+have components with no immediate external significance (status and preference 
+function). All components of the focus can be controlled by the memory.</P>
+<P>&nbsp;</P>
+<P>Retrieving well-behaved sequences from the memory to the motor part of the 
+focus would cause the corresponding actions to be executed by the system.</P>
+<P>&nbsp;</P><I>
+<P>Cued Behavior</P></I>
+<P>&nbsp;</P>
+<P>Assume that 80% of the focus is for sensory input and 20% for motor output. 
+Assume that the stimulus sequence &lt;A,B,C&gt; is to elicit the response 
+sequence &lt;X,Y,Z&gt;, with A triggering action X after one time step and so 
+on.</P>
+<P>&nbsp;</P>
+<P>The pattern sequence that needs to be generated in the focus is &lt;Aw, BX, 
+CY, dZ&gt; . In each pair, the first letter stands for sensory-input section and 
+the second for motor-output section of the focus.</P>
+<P>&nbsp;</P>
+<P>If &lt;AW, BX, CY, DZ&gt; has been written in memory, and A is presented to 
+the focus through the senses, then BX is likely to be retrieved from the memory 
+into the focus</P>
+<P>(d(Aw, AW) </FONT><FONT face=Symbol size=2>£</FONT><FONT size=2> 0.2 n 
+</FONT><FONT face=Symbol size=2>£</FONT><FONT size=2> critical distance 209, for 
+n = 1000).</P>
+<P>&nbsp;</P>
+<P>This means that action X will be performed at the time at which B is expected 
+(predicted) to be observed.</P>
+<P>&nbsp;</P>
+<P>Now, if the sensory report agrees with B, then BX will be used as the next 
+memory address and CY will be retrieved, causing action Y, and so on if 
+agreement persists.</P>
+<P>If A controls significantly less than 80% of the focus, or if the cue is not 
+exactly A but a similar pattern A</FONT><FONT face=Symbol size=2>¢</FONT><FONT 
+size=2>, then we may not be sufficiently close to the original write address AW 
+to retrieve BX or something similar to it. To read BX, it is then important that 
+the action part w be similar to W.</P>
+<P>&nbsp;</P>
+<P>Now, if W means that the system is <I><U>paying attention</I></U> and is 
+waiting for a cue, and w means that the system is performing some other action. 
+AW or A</FONT><FONT face=Symbol size=2>¢</FONT><FONT size=2>W will retrieve BX 
+(the system was waiting for the cue). But, Aw or A</FONT><FONT face=Symbol 
+size=2>¢</FONT><FONT size=2>w will not (the system was not waiting). This means 
+that the system will respond properly to a cue only if it is waiting for the 
+cue, i.e. the response depends on the state at the time the cue is 
+presented.</P>
+<P>&nbsp;</P>
+<P>If after BX has been read from memory, the senses input is suppressed, the 
+focus will be controlled <I>entirely</I> by the memory, and the rest of the 
+sequence will be recalled and the actions will be completed. But, if the agent 
+senses feed the sequence &lt;A,B,K,L&gt; where K and L are quite different from 
+C and D (sudden change), then BX will retrieve CY -action Y is executed 
+(inertia)- and senses report K instead of C which was expected to be sensed. The 
+next contents of the focus will be HY instead of CY (H is some combination of C 
+and K that, in general, is quite different from C). Thus DZ will not be 
+retrieved (failure of action Z). This failure can be explained as follows:</P>
+<P>&nbsp;</P>
+<P>1. an environment monitoring system ceases to act when the proper cues are no 
+longer present.</P>
+<P>&nbsp;</P>
+<P>2. a system that monitors its own actions effects, stops acting when the 
+effects no longer confirm the system </P>
+<P>expectations.</P>
+<P>&nbsp;</P>
+<P>Since the pattern retrieved from the memory includes an expectation of the 
+action results, the memory can be used to <I>plan actions</I> .</P>
+<P>&nbsp;</P>
+<P>The system will initiate the "thought" in the focus and then block off the 
+present (ignore environmental cues and suppress action execution). The memory 
+will then retrieve into the focus the likely consequences of the contemplated 
+actions.</P>
+<P>&nbsp;</P><I>
+<P>Learning to Act</P></I>
+<P>&nbsp;</P>
+<P>The model goodness is judged by how well it predicts the world. When the 
+model predicts incorrectly, it is adjusted. Action correction is much harder 
+than sensory correction. There is no <I>external</I> source feeding correct 
+action sequences into the focus.</P>
+<P>&nbsp;</P>
+<P>The action sequences have to be generated internally. They have to be 
+evaluated as to their desirability and should be stored in memory in a way that 
+makes desirable actions likely to be carried out and undesirable actions likely 
+to be avoided.</P>
+<P>&nbsp;</P><U>
+<P>Initial Conditions for Learning</P><I>
+<P>&nbsp;</P></I></U>
+<P>We are born with built in preferences (food satisfaction) and dislikes (hot, 
+pain) and instinctive ways to act (automatic reflexes). The learning for such 
+actions is passed to the individual as a part of the individual’s genetic 
+endowment. Given such preferences (desirable states) and dislikes (undesirable 
+states), we can define desirable and undesirable actions according to the states 
+to which they lead. Some patterns in the focus (states) are inherently good or 
+bad with most states being indifferent.</P>
+<P>&nbsp;</P>
+<P>Learning to act means that the system will store in memory sequences of 
+actions in a way that increases the likelihood of finding good states and of 
+avoiding bad ones.</P>
+<P>&nbsp;</P>
+<P>The system has a scalar preference function to evaluate patterns or 
+subjective states (indirectly evaluate action sequences). The good states have 
+high (positive) preference function values, and the bad states have low 
+(negative) ones, hence the problem becomes an <I>optimization problem.</P></I>
+<P>&nbsp;</P>
+<P>Indifferent states acquire values according to whether they are found on 
+paths to desirable or undesirable states. Thus, learning to act can be looked at 
+as assigning preferences to states that <I>start out as indifferent 
+states</I>.</P><U>
+<P>&nbsp;</P>
+<P>Realizing the Preference Function</P></U>
+<P>&nbsp;</P>
+<P>Each memory location will have a counter for the preference function. The 
+counter value is :</P>
+<P>positive for good (desirable) patterns</P>
+<P>negative for bad (undesirable) patterns</P>
+<P>close to zero for indifferent or as yet undefined patterns.</P>
+<P>&nbsp;</P>
+<P>On reading, counters for the preference fn. can be pooled in the same way as 
+pattern component counters. The sum is :</P>
+<P>positive if favorable focus pattern</P>
+<P>negative if unfavorable focus pattern</P>
+<P>zero if indifferent focus pattern.</P>
+<P>&nbsp;</P>
+<P>Built-in preference function means that some locations have nonzero function 
+counters from the start, and that such nonzero counters may even be 
+unmodifiable.</P>
+<P>&nbsp;</P><U>
+<P>Trial and Error Learning</P></U>
+<P>&nbsp;</P>
+<P>We assume that the system can block off external input after accepting the 
+initial input (the present situation) and that it can suspend the execution of 
+actions until it has accepted some proposed action sequence.</P>
+<P>&nbsp;</P>
+<P>If the present situation strongly resembles a past one, the system will 
+propose an action by recalling memory. Otherwise, it will <I><U>try</I></U> a 
+random action.</P>
+<P>&nbsp;</P>
+<P>If the state reached after iterating is undesirable, then we have an 
+<I><U>error</I></U>, and the system will try another action (backtracking). If 
+the state reached is good, the system has reason to proceed with the proposed 
+action.</P>
+<P>&nbsp;</P>
+<P>Trial and error is reasonable if the number of situations and actions (the 
+system state space) is small and simple, or if the proportion of desirable 
+states is large.</P>
+<P>&nbsp;</P>
+<P>The efficiency of searching and learning can be improved considerably if good 
+paths are remembered and are used later to find inherently good states.</P>
+<P>&nbsp;</P>
+<P>If an action sequence leads to a desirable pattern in the system focus, the 
+positive preference is extended backward with decreasing intensity (as bucket 
+brigade in Holland’s classifier systems). Similarly, negative preference is 
+extended for bad states.</P>
+<P>&nbsp;</P><U>
+<P>Supervised Learning</P><I>
+<P>&nbsp;</P></I></U>
+<P>Supervised learning substitutes an artificial (new) stimulus for a natural 
+(old) one. The system already has a natural (old) response for the old stimulus 
+and it has no response for the new stimulus.</P>
+<P>&nbsp;</P>
+<P>The <I>trainer</I> presents a new stimulus (e.g., a bell) followed by an old 
+one (food) and the system responds.</P>
+<P>&nbsp;</P>
+<P>After sufficient repetition, the new stimulus <I>alone</I> will elicit the 
+old response due to <I>extending the preference</I>.</P>
+<P>&nbsp;</P>
+<P>Usually no learning occurs if the old stimulus is presented before the new 
+one. The new stimulus can even take the place of the old stimulus in training 
+another artificial stimulus for the old response.</P>
+<P>&nbsp;</P><U>
+<P>Learning by Imitation</P></U>
+<P>&nbsp;</P>
+<P>The system will use itself to model the behavior of other systems. The system 
+must store an image of the behavior of others. It maps this image into actions 
+of its own.</P>
+<P>&nbsp;</P>
+<P>The system must observe the results of its own actions and compare them 
+against its image of the behavior of others (i.e., the system must identify with 
+the <I>role model</I>)</P>
+<P>&nbsp;</P>
+<P>An internal reward mechanism -used to perfect the match between the system 
+own behavior and that of the <I><U>role</I> <I>model</I></U>- is usually 
+necessary if a system is going to learn by imitation, which, in turn, is 
+primarily responsible for complicated social learning.</P>
+<P>&nbsp;</P><I>
+<P>The Encoding Problem</P></I>
+<P>&nbsp;</P>
+<P>The raw signal arriving at the sense organs is ill suited for building a 
+predictive model. Even if a number of regularities of the world are present in 
+the signal, they appear in far-from-optimal form and are embedded in noise.</P>
+<P>&nbsp;</P>
+<P>A sensory system has two functions :</P>
+<P>1. to filter out noise</P>
+<P>2. to transform relevant information into a form that is useful in building 
+and using the world model (<I><U>encoding problem</I></U>).</P>
+<P>&nbsp;</P>
+<P>Since patterns stored in memory attract similar patterns, the memory chunks 
+things with similar encodings, forming objects and individuals from them.</P>
+<P>&nbsp;</P>
+<P>A sensory system must express the sensory input in features that are 
+relatively <I>insensitive to scale (perturbations of objects),</I> among other 
+things.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT><B>
+<P align=center>A Cognitive Theory for Consciousness</P></B><FONT size=2>
+<P>&nbsp;</P>
+<P>The rule of consciousness in human cognition is vital. It enables and 
+enhances learning, allows for extra resource allocation, and deals with novel 
+situations among other things. Baars theory for consciousness accommodates for 
+many of the features and constraints in human consciousness and cognition, see 
+Baars (1995, 1997). Competing contexts standing for various different goals 
+exist. Players (processes represented as codelets) governed by various contexts 
+also compete to gain access to the playing field where they form candidate 
+coalitions. Only one such coalition can be in consciousness at one time. A 
+spotlight notion is developed to shine upon the conscious coalition forming the 
+conscious experience. So, not all the players in the playing field are in the 
+spotlight. Only those players who are members of the conscious coalition are in 
+the spotlight. There is also a big audience of unconscious players waiting 
+outside the playing field. Once some coalition gets into consciousness, a 
+broadcast of it takes place making it accessible to everyone. This serves to 
+employ more resources by making some of the audience unconscious processes jump 
+into the playing field when they find something relevant in the broadcast coming 
+through consciousness.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT><B>
+<P align=center>Cmattie, A Clerical Agent</P></B><FONT size=2>
+<P>&nbsp;</P>
+<P>Cmattie is a software agent developed to facilitate and perform the seminars 
+email list in the mathematical sciences dept. in the University of Memphis, see 
+(). There was a predecessor of Cmattie, namely Vmattie, which was lacks 
+consciousness among other stuff. For more detials on Vmattie, see (Franklin, 
+Graesser, Olde, Song, and Negatu 1997). Both Vmattie and Cmattie can handle a 
+seminar list in an academic department. They receive various emails from the 
+seminar organizers, speakers, and attendees. They handle their requests, respond 
+to their queries, and compose the weekly department seminar list. While Vmattie 
+is limited in nature in its learning capability as well as lacking some 
+supportive modules, Cmattie is augmented with a wide variety of control 
+structures for autonomous agents.</P>
+<P>&nbsp;</P>
+<P>Two main types of memory are used in Cmattie, SDM and a Case Based Memory 
+referred to from now on as CBM. Both memories are used for suggesting actions 
+and emotional status of Cmattie. SDM has precedence over CBM in terms of default 
+extraction. So, when both memories converge on reading, SDM focus registers are 
+given precedence over the ones in CBM. Each of the memories has an input and an 
+output focus to prevent overwriting of input cues since the output from reading 
+is usually different from the input.</P>
+<P>&nbsp;</P>
+<P>Another big addition to Cmattie over Vmattie is the Consciousness Apparatus 
+(Spotlight Controller, Coallition Manager Controller, Playing Field, ..etc), see 
+Bogner, and Franklin (1998) for more details.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT><B>
+<P align=center>SDM in Cmattie</P></B><FONT size=2>
+<P>&nbsp;</P>
+<P>SDM is used in Cmattie for two main functions:</P>
+<P>&nbsp;</P>
+<OL type=i>
+  <LI>Suggesting actions to be taken and behaviors to activate as well as the 
+  emotional status of the agent based on the coming percepts (values of the 
+  attention registers). Suggestion will be based on previous experience and says 
+  what should be the status of the agent in terms of behavior activation and 
+  emotional status as a response for the observed values in the perception 
+  registers (PRs). 
+  <P>The auto-associative SDM used here relies on the dominance -in size- of the 
+  percepts over the behaviors and emotions.</P>
+  <P>&nbsp;</P>
+  <LI>Providing for defaults for missing perception registers (PRs) based on 
+  previous history.</LI></OL>
+<P>&nbsp;</P>
+<P>&nbsp;</P><I>
+<P>How it works?</P>
+<P>&nbsp;</P></I>
+<P>The incoming message is dissected into a group of attention registers (PRs), 
+see Zhang, Franklin, Olde, Graesser, and Wan (1996). Those registers form the 
+first guess about the meaning and the purpose of the message. The PRs are then 
+copied in parallel into two places, SDM focus and input focus of the CBM. Each 
+memory goes into a reading cycle which may converge or diverge. Upon 
+convergence, the contents of each memory is considered, with precedence given to 
+SDM when conflict arises. The result of the reading operation is placed into the 
+output focuses of SDM and CBM respectively. So we have five focuses in all 
+depicted in figure 6 below.</P>
+<P>&nbsp;</P>
+<P>When the output from SDM is considered, three different parts of it are 
+there:</P>
+<P>&nbsp;</P>
+<P>i. Defaults for PRs which might come from reading SDM with incomplete set of 
+original PRs.</P>
+<P>&nbsp;</P>
+<P>ii. Behavior activation (action selection) in response to the percept 
+received.</P>
+<P>&nbsp;</P>
+<P>iii. Emotional status for the agent based on the percept received, and the 
+expected results of the action taken in accordance.</P>
+<P>&nbsp;</P>
+<P>The various fields retrieved from SDM and CBM are used by different modules 
+in the architecture. For example, the emotional mechanism relies on the 
+emotional status recommendations retrieved from SDM and CBM on determining the 
+next emotional status for Cmattie.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT><B>
+<P align=center>Results and Statistics</P></B><FONT size=2>
+<P>&nbsp;</P>
+<P>The following table gives the percentage of correct action and/or behavior 
+activation as well as emotional status in return for a percept of sufficient 
+length.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Table 3: Percentage of Correct action selection/behavior activation and 
+emotional status. </P>
+<P>&nbsp;</P></FONT>
+<P align=left>
+<TABLE cellSpacing=1 cellPadding=7 width=228 border=1>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width="32%">&nbsp;</TD>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P align=center>Action/</P>
+      <P align=center>Behavior</FONT></P></TD>
+    <TD vAlign=top width="37%"><FONT size=2>
+      <P align=center>Emotional</P>
+      <P align=center>Status</FONT></P></TD></TR>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P align=center>Correct</FONT></P></TD>
+    <TD vAlign=top width="32%">&nbsp;</TD>
+    <TD vAlign=top width="37%">&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P align=center>Incorrect</FONT></P></TD>
+    <TD vAlign=top width="32%">&nbsp;</TD>
+    <TD vAlign=top width="37%">&nbsp;</TD></TR></TBODY></TABLE></P><FONT size=2>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>The following table gives the percentage of correct default supplying of 
+certain perception registers (PRs) in return for a percept of sufficient 
+length.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>Table 4: Percentage of correct default extraction of each PR.</P>
+<P>&nbsp;</P></FONT>
+<P align=left>
+<TABLE cellSpacing=1 cellPadding=7 width=228 border=1>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P align=center>PR</FONT></P></TD>
+    <TD vAlign=top width="34%"><FONT size=2>
+      <P align=center>Correct</FONT></P></TD>
+    <TD vAlign=top width="34%"><FONT size=2>
+      <P align=center>Incorrect</FONT></P></TD></TR>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P>Organizer</FONT></P></TD>
+    <TD vAlign=top width="34%">&nbsp;</TD>
+    <TD vAlign=top width="34%">&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P>Speaker</FONT></P></TD>
+    <TD vAlign=top width="34%">&nbsp;</TD>
+    <TD vAlign=top width="34%">&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P>Seminar</FONT></P></TD>
+    <TD vAlign=top width="34%">&nbsp;</TD>
+    <TD vAlign=top width="34%">&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P>Day</FONT></P></TD>
+    <TD vAlign=top width="34%">&nbsp;</TD>
+    <TD vAlign=top width="34%">&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P>Time</FONT></P></TD>
+    <TD vAlign=top width="34%">&nbsp;</TD>
+    <TD vAlign=top width="34%">&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P>Room</FONT></P></TD>
+    <TD vAlign=top width="34%">&nbsp;</TD>
+    <TD vAlign=top width="34%">&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width="32%"><FONT size=2>
+      <P>Title</FONT></P></TD>
+    <TD vAlign=top width="34%">&nbsp;</TD>
+    <TD vAlign=top width="34%">&nbsp;</TD></TR></TBODY></TABLE></P><FONT size=2>
+<P>&nbsp;</P>
+<P>&nbsp;</P></FONT><B>
+<P align=center>Conclusion</P></B><FONT size=2>
+<P>&nbsp;</P>
+<P>SDM proves to be a successful tool for</P>
+<P align=justify>associative memory. SDM is capable of building previously 
+encountered percepts based on a part of the percept. It can also get defaults 
+for missing PRs. The evaluation of suggested actions and emotional status is 
+satisfactory. However, a complete evaluation when Cmattie starts running will 
+give more light on how well SDM is able to learn percept-action-emotion 
+associations</P>
+<P>&nbsp;</P></FONT><B>
+<P align=center>References</P>
+<P align=center>&nbsp;</P></B><FONT size=2>
+<P>Albus, James S. (1981). <I>Brains, Behavior, and Robotics</I>. Byte 
+Publications.</P>
+<P>&nbsp;</P>
+<P>Albus, James S. (1991). <I>Outline for a Theory of Intelligence.</I> IEEE 
+Transactions on Systems, Man, and Cybernetics, vol 21 no. 3, May/June. </P>
+<P>Archibald, Colin, and Kwok, Paul. (1995). <I>Research in Computer and Robot 
+Vision.</I> World Scientific Publishing Co.</P>
+<P>&nbsp;</P>
+<P>Baars, Bernard J. (1995). <I>A Cognitive Theory of Consciousness</I>. 
+Cambridge University Press.</P>
+<P>&nbsp;</P>
+<P>Baars, Bernard J, (1997), <I>In the Theater of Consciousness. Oxford 
+University Press.</P>
+<P>&nbsp;</P></I>
+<P>Bates, Joseph, Loyall, Bryan, and Reilly, W. Scott. (1991). <I>Broad 
+Agents</I>. CMU.</P>
+<P>&nbsp;</P>
+<P>Bates, Joseph, Loyall, Bryan, and Reilly, W. Scott. (1992).<I> An 
+Architecture for Action, Emotion, and Social Behavior</I>. CMU.</P>
+<P>&nbsp;</P>
+<P>Boden, Margaret A. (1988). <I>Computer Models of Mind.</I> Cambridge 
+University Press.</P>
+<P>&nbsp;</P>
+<P>Callari, Francesco G., and Ferrie, Frank P. (1996). <I>Active Recognition: 
+Using Uncertainty to Reduce Ambiguity</I>. ICPR96.</P>
+<P>&nbsp;</P>
+<P>Franklin, Stan. (1995).<B> </B><I>Artificial Minds</I>. MIT Press.</P>
+<P>&nbsp;</P>
+<H2>Franklin, Stan, Graesser, Art, Olde, Brent, Song, Hongjun, Negatu, 
+Aregahegn. (1997). Virtual Mattie-an Intelligent Clerical Agent. Institute for 
+Intelligent Systems, The University of Memphis.</H2>
+<P>&nbsp;</P>
+<P>Franklin, Stan. (1997). <I>Autonomous Agents as Embodied AI.</I> Cybernetics 
+and Systems, special issue on Epistemological Issues in Embedded AI.</P>
+<P>&nbsp;</P>
+<P>Franklin, Stan. (1997). <I>Global Workspace Agents</I>. Institute for 
+Intelligent Systems.</P>
+<P>&nbsp;</P>
+<P>Franklin, Stan, and Graesser, Art. (1997). <I>Is it an Agent, or just a 
+Program? A Taxonomy for Autonomous Agents</I>. Proceedings of the Third </P>
+<P>International Workshop on Agent Theories, Architectures, and Languages, 
+published as Intelligent Agents III, Springer-Verlag, 21-35.</P>
+<P>&nbsp;</P>
+<P>Glenberg, Arthur M. (1997). What Memory is for? Behavioral and Brain 
+Sciences.</P>
+<P>&nbsp;</P>
+<P>Kanerva, Pentti. (1990). <I>Sparse Distributed Memory</I><B>.</B> MIT 
+Press.</P>
+<P>&nbsp;</P>
+<P>Karlsson, Roland. (1995). <I>Evaluation of a Fast Activation Mechanism for 
+the Kanerva SDM.</I> RWCP Neuro SICS Laboratory. </P>
+<P>&nbsp;</P>
+<P>Kosslyn, Stephen M., and Koenig, Olivier. (1992). <I>Wet Mind.</I> Macmillan 
+Inc.</P>
+<P>&nbsp;</P>
+<P>Kristoferson, Jan. (1995a). <I>Some Comments on the Information Stored in 
+SDM.</I> RWCP Neuro SICS Laboratory.</P>
+<P>&nbsp;</P>
+<P>Kristoferson, Jan. (1995b).<I> Best Probability of Activation and Performance 
+Comparisons for Several Designs of SDM.</I> RWCP Neuro SICS </P>
+<P>laboratory.</P>
+<P>&nbsp;</P>
+<P>Russell, Stuart, and Norvig, Peter. (1995). <I>Artificial Intelligence A 
+Modern Approach.</I> Prentice-Hall Inc.</P>
+<P>&nbsp;</P>
+<P>Scheier, Christian, and Lambrinos, Dimitrios. (1996). <I>Categorization in a 
+Real-World Agent Using Haptic Exploration and Active Perception. </P></I>
+<P>SAB 96 Proceedings.</P>
+<P>&nbsp;</P>
+<P>Sjodin, Gunnar. (1995). <I>Convergence and New Operations in SDM</I>. RWCP 
+Neuro SICS Laboratory.</P>
+<P>&nbsp;</P>
+<P>Zhang, Zhaohua, Franklin, Stan, Olde, Brent, Graesser, Art, and Wan, Yun. 
+(1996). <I>Natural Language Sensing for Autonomous Agents.</P></I>
+<P>Institute for Intelligent Systems, The University of Memphis.</P>
+<P>&nbsp;</P>
+<P>Zuech, Nello, and Miller, Richard K. (1987). <I>Machine Vision</I>. The 
+Fairmont Press.</P>
+<P>&nbsp;</P></FONT></BODY></HTML>

@@ -1,0 +1,1 @@
+&soundPath=http://ccrg.cs.memphis.edu/assets/audio/The%20IDA%20Model%20of%20Cognition.mp3&&totalSlides=20&&Slide1=0&&Slide2=21&&Slide3=205&&Slide4=312&&Slide5=384&&Slide6=1120&&Slide7=1360&&Slide8=1577&&Slide9=1895&&Slide10=3120&&Slide11=3262&&Slide12=3505&&Slide13=3874&&Slide14=4255&&Slide15=4612&&Slide16=4722&&Slide17=5617&&Slide18=5825&&Slide19=6782&&Slide20=6962&

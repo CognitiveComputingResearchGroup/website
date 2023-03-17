@@ -1,0 +1,2 @@
+&soundPath=http://ccrg.cs.memphis.edu/assets/audio/The%20IDA%20Cognitive%20Cycle.mp3&&totalSlides=34&&Slide1=0&&Slide2=1&&Slide3=240&&Slide4=314&&Slide5=373&&Slide6=434&&Slide7=556&&Slide8=571&&Slide9=638&&Slide10=652&&Slide11=810&&Slide12=849&&Slide13=1092&&Slide14=1280&&Slide15=1353&&Slide16=1427&&Slide17=1493&&Slide18=1586&&Slide19=1696&&Slide20=2408&&Slide21=2619&
+&Slide22=2686&&Slide23=2710&&Slide24=2978&&Slide25=3083&&Slide26=3701&&Slide27=3768&&Slide28=3827&&Slide29=3847&&Slide30=4244&&Slide31=4371&&Slide32=4494&&Slide33=4560&&Slide34=4565&

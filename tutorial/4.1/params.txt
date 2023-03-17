@@ -1,0 +1,3 @@
+&soundPath=http://ccrg.cs.memphis.edu/assets/audio/Neuroscience.mp3&&totalSlides=24&&Slide1=0&&Slide2=90&&Slide3=229&&Slide4=421&&Slide5=970&&Slide6=1068&&Slide7=1597&&Slide8=1800&&Slide9=2084&&Slide10=2125&&Slide11=2502&&Slide12=2550&&Slide13=2809&&Slide14=3076&&Slide15=3220&&Slide16=3383&&Slide17=3570&&Slide18=3700&&Slide19=3890&&Slide20=4011&&Slide21=4255&&Slide22=4372&
+&slide23=4632&
+&slide23=4642&
